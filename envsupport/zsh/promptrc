@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ -a ~/.preferredhostname ]] then
+    ENVHOSTNAME=`cat ~/.preferredhostname`
+else
+    echo "Using system hostname. Change ~/.preferredhostname to specify your own"
+    ENVHOSTNAME=`hostname`
+fi
+

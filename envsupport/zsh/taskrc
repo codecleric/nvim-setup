@@ -1,0 +1,16 @@
+# :set syn=sh
+
+# Task Warrior
+# From  http://cs-syd.eu/posts/2015-06-21-gtd-with-taskwarrior-part-2-collection.html
+alias in="task add +in"
+
+# From  http://cs-syd.eu/posts/2015-06-28-gtd-with-taskwarrior-part-3-tickling.html
+# Add this to zshrc to load this file:
+#       [[ -a /usr/local/bin/task ]] && source ~/.vim/envsupport/zsh/taskrc
+#
+tickle() {
+    deadline=$1
+    shift
+    in +tickle wait:$deadline $@
+}
+alias tick=tickle

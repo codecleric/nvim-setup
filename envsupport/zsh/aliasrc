@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+alias rmorig="find . -name '*.orig' -delete"
+alias rmrej="find . -name '*.rej' -delete"
+alias rmpyc="find . -name '*.py[co]' -delete"
+alias rmgrep="find . -name '*.grep' -delete"
+alias rmtodo="find . -name '*.todo' -delete"
+
+alias py25="python2.5"
+alias py26="python2.6"
+alias py27="python2.7"
+alias py="python3"
+alias ipy="ipython"
+
+sys="`uname`"
+echo "System is $sys"
+case "$sys" in
+    Darwin)
+        alias ls="ls -FG"
+        ;;
+    Linux)
+        alias ls="ls -F --color=auto"
+        ;;
+esac
+
+alias la="ls -a"
+alias ll="ls -l"
+alias lal="ll -a"
+
+# Docker aliases
+alias dg="docker images | grep "
+alias godefault='eval $(docker-machine env default)'
+alias golocal='eval $(docker-machine env isig)'
+alias gosr01='eval $(docker-machine env srdocker01)'
+alias srd="docker images | grep scriberule"
+
