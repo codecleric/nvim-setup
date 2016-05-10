@@ -6,7 +6,7 @@ export ENVSUPPORT_PATH=${HOME}/.vim/envsupport
 git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
 
 # Install supporting RC files
-zsh $NVIM_PATH/support/bootstrap.sh
+zsh $NVIM_PATH/envsupport/bootstrap.sh
 
 # Install zgen packages
 source "${HOME}/.zshrc"
