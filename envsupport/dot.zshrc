@@ -63,17 +63,17 @@ if ! zgen saved; then
     zgen save
 fi
 
-source ~/.vim/envsupport/zsh/aliasrc
-source ~/.vim/envsupport/zsh/develrc
+source ~/.config/nvim/envsupport/zsh/aliasrc
+source ~/.config/nvim/envsupport/zsh/develrc
 
-[[ -a /usr/local/bin/task ]] && source ~/.vim/envsupport/zsh/taskrc
+[[ -a /usr/local/bin/task ]] && source ~/.config/nvim/envsupport/zsh/taskrc
 
 set -o vi
 setopt histreduceblanks
 setopt no_share_history
 
 ## AUTOENV setup and functions
-export AUTOENV_COMMON_HOOKS=$HOME/.vim/envsupport/zsh/autoenv
+export AUTOENV_COMMON_HOOKS=$HOME/.config/nvim/envsupport/zsh/autoenv
 
 rbb_init_autoenv() {
     cat > $AUTOENV_FILE_ENTER <<EOF

@@ -34,3 +34,15 @@ alias golocal='eval $(docker-machine env isig)'
 alias gosr01='eval $(docker-machine env srdocker01)'
 alias srd="docker images | grep scriberule"
 
+alias bri_dkr_images_dangling="docker images -qf 'dangling=true'"
+alias bri_dkr_rmi_dangling="docker rmi \$(bri_dkr_images_dangling)"
+      
+alias bri_dkr_ps_exited="docker ps -q -f status=exited"
+alias bri_dkr_rm_exited="docker rm \$(bri_dkr_ps_exited)"
+      
+alias bri_dkr_volumes_dangling="docker volume ls -q-f 'dangling=true'"
+alias bri_dkr_rmvol_dangling="docker volume rm \$(bri_dkr_volumes_dangling)"
+      
+alias bri_dkr_cleanup="bri_dkr_rm_exited ; bri_dkr_rmi_dangling ; bri_dkr_rmvol_dangling"
+
+alias aws_ecr_docker_login="eval \$(aws ecr get-login --profile scriberule-ecs-access)"

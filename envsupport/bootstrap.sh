@@ -8,9 +8,6 @@ if [[ -n $ENVSUPPORT_PATH ]]; then
     ln -fs $ENVSUPPORT_PATH/dot.tmux.conf .tmux.conf
     # USED for non-public keys #ln -fs $SUPPORT_PATH/zshenv .zshenv
 
-    ln -fs $ENVSUPPORT_PATH/dot.vimrc .vimrc
-    ln -fs $ENVSUPPORT_PATH/dot.gvimrc .gvimrc
-
     ln -fs $ENVSUPPORT_PATH/dot.hgrc .hgrc
     ln -fs $ENVSUPPORT_PATH/dot.hgignore_shared .hgignore_shared
 
