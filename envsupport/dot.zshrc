@@ -16,7 +16,7 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # theme
-    zgen oh-my-zsh themes/brian
+    zgen oh-my-zsh themes/cloud
 
     # plugins
     zgen oh-my-zsh plugins/vi-mode
@@ -48,7 +48,7 @@ if ! zgen saved; then
             zgen oh-my-zsh plugins/brew
             ;;
         Linux)
-            zgen oh-my-zsh plugins/linux
+            zgen oh-my-zsh plugins/debian
             ;;
     esac
     
