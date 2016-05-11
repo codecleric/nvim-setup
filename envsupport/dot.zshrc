@@ -41,7 +41,7 @@ if ! zgen saved; then
     # github plugins
     zgen load Tarrasch/zsh-autoenv
     zgen load jocelynmallon/zshmarks
-    zgen load yonchu/vimman
+    ##TODO: error to fix## zgen load yonchu/vimman 
 
     case "$sys" in
         Darwin)
