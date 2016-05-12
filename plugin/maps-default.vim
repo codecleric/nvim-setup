@@ -1,4 +1,4 @@
-echom "Loading Custom Plugin Maps"
+echo "Loading Custom Plugin Maps"
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>nm :NERDTreeMirror<CR>
 map <Leader>nf :NERDTreeFind<CR>
