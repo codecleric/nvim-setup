@@ -1,0 +1,5 @@
+[core]
+	editor = /usr/local/bin/nvim
+[user]
+	name = Brian Brown
+	email = bbrown@scriberule.com
