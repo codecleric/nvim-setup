@@ -28,7 +28,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/python 
     zgen oh-my-zsh plugins/pip 
     zgen oh-my-zsh plugins/command-not-found 
-    #zgen oh-my-zsh plugins/chucknorris
+    zgen oh-my-zsh plugins/chucknorris
     zgen oh-my-zsh plugins/web-search
     zgen oh-my-zsh plugins/tmux
     zgen oh-my-zsh plugins/vault

@@ -1,53 +1,36 @@
-let shouldLoad = 1
+echom "Loading Custom Plugin Maps"
+map <Leader>n :NERDTreeToggle<CR>
+map <Leader>nm :NERDTreeMirror<CR>
+map <Leader>nf :NERDTreeFind<CR>
 
-if has("win32") || has("unix")
-    echom "Has win32 or unix"
-    let shouldLoad = 0
-endif
+map <Leader>b :SelectBuf<CR>
 
-if has("mac")
-    echom "Has mac"
-    let shouldLoad = 1
-endif
+map <Leader>l :lcd %:h<cr>
+map <Leader>lc :cd %:h<cr>
 
-if shouldLoad < 1
-    echom "Loading DEFAULT Function Key Maps"
+" <Leader>g = Fugitive plugin for Git
+map <Leader>gw :Gwrite<CR>
+map <Leader>gc :Gcommit<CR>
+map <Leader>gp :Gpush origin master<CR>
+map <Leader>gs :Gstatus<CR>
+map <Leader>gb :Gblame<CR>
+map <Leader>gf :Gpull<CR>
+map <Leader>gd :Gdiff<CR>
 
-    "
-    " F2 = NERD Tree
-    map <F2> :NERDTreeToggle<CR>
-    map <C-F2> :NERDTreeMirror<CR>
-    map <S-F2> :NERDTreeFind<CR>
+" make C-N and C-P move to the next and previous 'error'
+map <C-N> :cn<cr>
+map <C-P> :cp<cr>
 
-    " F3 is used by SelectBuf by default
+" Toggle the TagList buffer
+nmap <Leader>vt :TagbarToggle<CR>
+nmap <Leader>vc :TagbarOpenAutoClose<CR>
 
-    map <F4> :lcd %:h<cr>
-    map <S-F4> :cd %:h<cr>
+" NVIM built in terminal
+nmap <Leader>ts :sp term://zsh<CR>
+nmap <Leader>te :e term://zsh<CR> 
+nmap <Leader>tv :vs term://zsh<CR>
 
-    " F5, F6 = Fugitive plugin for Git
-    map <F5> :Gwrite<CR>
-    map <S-F5> :Gcommit<CR>
-    map <C-F5> :Gpush origin master<CR>
-    map <F6> :Gstatus<CR>
-    map <S-F6> :Gblame<CR>
-    map <C-F6> :Gpull<CR>
+" python stuff
+nmap <Leader>pp :sp term://ipython<CR>
+nmap <Leader>pc :!couchapp push<CR>
 
-    " make C-N and C-P move to the next and previous 'error'
-    map <C-N> :cn<cr>
-    map <C-P> :cp<cr>
-
-    " Toggle the TagList buffer
-    nmap <F7> :TagbarOpenAutoClose<CR>
-    map <C-F7> :TagbarToggle<CR>
-
-    
-    " NVIM built in terminal
-    nmap <F8> :sp term://zsh<CR>
-    nmap <C-F8> :e term://zsh<CR> 
-    nmap <S-F8> :vs term://zsh<CR>
-
-    " couchapp
-    nmap <F9> :!couchapp push<CR>
-    nmap <C-F9> :sp term://ipython<CR>
-
-endif
