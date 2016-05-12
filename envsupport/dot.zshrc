@@ -6,11 +6,6 @@
 # load zgen
 source ~/.zgen/zgen.zsh
 
-# set up some conditionals
-#
-sys="`uname`"
-echo "System is $sys"
-#
 # if the init script doesn't exist
 if ! zgen saved; then
     zgen oh-my-zsh
@@ -43,6 +38,10 @@ if ! zgen saved; then
     zgen load jocelynmallon/zshmarks
     ##TODO: error to fix## zgen load yonchu/vimman 
 
+    # set up some conditionals
+    #
+    #
+    sys="`uname`"
     case "$sys" in
         Darwin)
             zgen oh-my-zsh plugins/brew
