@@ -29,8 +29,23 @@ nmap <Leader>vc :TagbarOpenAutoClose<CR>
 nmap <Leader>ts :sp term://zsh<CR>
 nmap <Leader>te :e term://zsh<CR> 
 nmap <Leader>tv :vs term://zsh<CR>
+nmap <Leader>tp :sp term://ipython<CR>
+
+" tab controls
+nmap <C-t>n :tabnext<CR>
+nmap <C-t>p :tabprevious<CR> 
+nmap <C-t>t :tabnew<CR>
 
 " python stuff
-nmap <Leader>pp :sp term://ipython<CR>
 nmap <Leader>pc :!couchapp push<CR>
 
+" FLoobits
+nmap <Leader>fj :FlooJoinWorkspace<CR>
+nmap <Leader>fn :FlooShareDirPublic<CR>
+nmap <Leader>fs :FlooSummon<CR>
+nmap <Leader>ff :FlooFollowUser<CR>
+nmap <Leader>fa :FlooAddBuf
+" Floo browser 
+nmap <Leader>fb :FlooOpenInBrowser
+" Floo talk (chat really)
+nmap <Leader>ft :FlooSaySomething
