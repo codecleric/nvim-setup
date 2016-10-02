@@ -1,6 +1,9 @@
 let mapleader = ","
 set nocompatible              " be iMproved, required
 
+" Assumes vundler is installed at `${HOME}/.vim/bundle`
+"  > git clone https://github.com/VundleVim/Vundle.vim.git ./bundle/Vundle.vim
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 filetype off                  " required
