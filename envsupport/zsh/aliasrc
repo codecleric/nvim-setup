@@ -33,7 +33,17 @@ alias godefault='eval $(docker-machine env default)'
 alias golocal='eval $(docker-machine env isig)'
 alias gosr01='eval $(docker-machine env srdocker01)'
 alias srd="docker images | grep scriberule"
+alias godocker_vm_01="pkill -9 -x -f \"ssh -f -N docker01-vm-tunnel\";ssh -f -N docker01-vm-tunnel;export DOCKER_HOST=tcp://localhost:12376; export docker_short=docker01-vm"
+alias godocker_01="pkill -9 -x -f \"ssh -f -N docker01-tunnel\";ssh -f -N docker01-tunnel;export DOCKER_HOST=tcp://localhost:12377; export docker_short=docker01"
 
+
+dkr-env-reset() { 
+    export DOCKER_TLS_VERIFY="" 
+    export DOCKER_HOST="" 
+    export DOCKER_CERT_PATH="" 
+    export DOCKER_MACHINE_NAME="" 
+    export docker_short="local"
+}
 dkr-cleanup() {
   local containers=($(docker ps -q -f 'status=exited'))
   if [[ -n "$containers" ]]; then
@@ -74,3 +84,8 @@ bri_dkr_cleanup() { return dkr-cleanup }
 
 alias aws_ecr_docker_login="eval \$(aws ecr get-login --profile scriberule-ecs-access)"
 
+# zshmarks aliases
+alias sm="showmarks"
+alias bm="bookmark"
+alias dm="deletemark"
+alias j="jump"

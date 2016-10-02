@@ -6,12 +6,20 @@
 # load zgen
 source ~/.zgen/zgen.zsh
 
+sys="`uname`"
 # if the init script doesn't exist
 if ! zgen saved; then
     zgen oh-my-zsh
 
     # theme
-    zgen oh-my-zsh themes/cloud
+    case $USER in
+        brian)
+            zgen oh-my-zsh custom/themes/brian
+            ;;
+        *)
+            zgen oh-my-zsh themes/cloud
+            ;;
+    esac
 
     # plugins
     zgen oh-my-zsh plugins/vi-mode
@@ -41,7 +49,6 @@ if ! zgen saved; then
     # set up some conditionals
     #
     #
-    sys="`uname`"
     case "$sys" in
         Darwin)
             zgen oh-my-zsh plugins/brew
@@ -70,6 +77,12 @@ source ~/.config/nvim/envsupport/zsh/develrc
 set -o vi
 setopt histreduceblanks
 setopt no_share_history
+
+case "$sys" in
+    Linux)
+        setxkbmap -layout us -option ctrl:nocaps
+        ;;
+esac
 
 ## AUTOENV setup and functions
 export AUTOENV_COMMON_HOOKS=$HOME/.config/nvim/envsupport/zsh/autoenv

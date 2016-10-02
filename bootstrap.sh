@@ -6,14 +6,18 @@ export ENVSUPPORT_PATH=${HOME}/.config/nvim/envsupport
 git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
 
 
-# Fetch dein for neovim
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-sh installer.sh  ~/.config/nvim/dein
-rm installer.sh
+# Fetch Vundle for vim/neovim
+git clone https://github.com/VundleVim/Vundle.vim.git $NVIM_PATH/bundle/Vundle.vim
+
 
 # Install supporting RC files
 zsh $NVIM_PATH/envsupport/bootstrap.sh
 
 # Install zgen packages
 source "${HOME}/.zshrc"
+
+# Install Custom Theme
+export THEME_PATH="${HOME}/.zgen/robbyrussell/oh-my-zsh-master/zsh_custom/themes"
+mkdir -p $THEME_PATH
+cp $NVIM_PATH/envsupport/zsh/brian.zsh-theme $THEME_PATH/
 /bin/true

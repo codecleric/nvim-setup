@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.config/nvim/plugin/maps-default.vim.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v2">
+<meta name="syntax" content="vim">
+<meta name="settings" content="use_css,no_foldcolumn,expand_tabs,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Statement { color: #af5f00; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Special { color: #c000c0; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Statement">silent</span> <span class="Statement">echom</span> <span class="Constant">&quot;Loading Custom Plugin Maps&quot;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>n :NERDTreeToggle<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>nm :NERDTreeMirror<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>nf :NERDTreeFind<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>b :SelectBuf<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>l :lcd %:h<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>lc :cd %:h<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">&quot; &lt;Leader&gt;g = Fugitive plugin for Git</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gw :Gwrite<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gc :Gcommit<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gp :Gpush origin master<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gs :Gstatus<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gb :Gblame<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gf :Gpull<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gd :Gdiff<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Comment">&quot; make C-N and C-P move to the next and previous 'error'</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-N</span><span class="Special">&gt;</span> :cn<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-P</span><span class="Special">&gt;</span> :cp<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">&quot; Toggle the TagList buffer</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>vt :TagbarToggle<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>vc :TagbarOpenAutoClose<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Comment">&quot; NVIM built in terminal</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ts :sp term://zsh<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>te :e term://zsh<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>tv :vs term://zsh<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>tp :sp term://ipython<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Comment">&quot; tab controls</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span>n :tabnext<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span>p :tabprevious<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span>t :tabnew<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Comment">&quot; python stuff</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>pc :!couchapp push<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Comment">&quot;</span>
+<span class="Comment">&quot; FLoobits</span>
+<span class="Comment">&quot;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fj :FlooJoinWorkspace <a href="https://floobits.com/">https://floobits.com/</a>&lt;who&gt;/&lt;ws name&gt;
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fl :FlooLeaveWorkspace<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fn :FlooShareDirPublic .
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fs :FlooSummon<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Comment">&quot; Follows the most recent changes</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ff :FlooToggleFollowMode<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ffu :FlooFollowUser<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fa :FlooAddBuf
+<span class="Comment">&quot; Floo browser </span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fb :FlooOpenInBrowser<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Comment">&quot; Floo talk (chat really)</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ft :FlooSaySomething<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fi :FlooInfo<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fm :FlooListMessages<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
