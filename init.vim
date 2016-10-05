@@ -118,3 +118,9 @@ set nowrap
 "set number
 set nowritebackup
 set hlsearch
+
+if !empty(glob(expand("~/.nvimlocal.vim")))
+   echo "Sourcing ~/.nvimlocal.vim."
+   source ~/.nvimlocal.vim
+endif
+
