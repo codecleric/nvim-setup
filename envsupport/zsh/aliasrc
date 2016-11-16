@@ -35,6 +35,7 @@ alias gosr01='eval $(docker-machine env srdocker01)'
 alias srd="docker images | grep scriberule"
 alias godocker_vm_01="pkill -9 -x -f \"ssh -f -N docker01-vm-tunnel\";ssh -f -N docker01-vm-tunnel;export DOCKER_HOST=tcp://localhost:12376; export docker_short=docker01-vm"
 alias godocker_01="pkill -9 -x -f \"ssh -f -N docker01-tunnel\";ssh -f -N docker01-tunnel;export DOCKER_HOST=tcp://localhost:12377; export docker_short=docker01"
+alias gosrinfra-nodec="pkill -9 -x -f \"ssh -f -N srinfra-nodec.tunnel\";ssh -f -N srinfra-nodec.tunnel;export DOCKER_HOST=tcp://localhost:12380; export docker_short=srinfra-nodec"
 
 
 dkr-env-reset() { 

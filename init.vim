@@ -85,8 +85,10 @@ call vundle#begin()
   "Plugin 'IN3D/vim-raml'
   Plugin 'ekalinin/Dockerfile.vim'
   "Plugin 'nicr9/vim-orca'
-  Plugin 'Shougo/vimproc.vim'
-  Plugin 'Shougo/vimshell.vim'
+  "
+  "Vim only
+  "Plugin 'Shougo/vimproc.vim'
+  "Plugin 'Shougo/vimshell.vim'
   Plugin 'lambdatoast/elm.vim'
   Plugin 'tlib'
   Plugin 'tmboxbrowser'
