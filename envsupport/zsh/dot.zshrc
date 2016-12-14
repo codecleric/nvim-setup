@@ -119,4 +119,4 @@ rbb_init_mega() {
   cd $PWD
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zsh.local ] && source ~/.zsh.local
