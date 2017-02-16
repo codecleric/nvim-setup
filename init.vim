@@ -7,7 +7,7 @@ set nocompatible              " be iMproved, required
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 filetype off                  " required
-call vundle#begin()
+call vundle#begin('~/.config/nvim/bundle')
  Plugin 'VundleVim/Vundle.vim'
   " General environment improvement
   Plugin 'vim-scripts/genutils'
@@ -100,6 +100,7 @@ call vundle#begin()
   Plugin 'mxw/vim-jsx'
   Plugin 'moll/vim-node'   " jump through require statements
 
+  Plugin 'ternjs/tern_for_vim'
   " Themes
   Plugin 'nanotech/jellybeans.vim'
   Plugin 'flazz/vim-colorschemes'
