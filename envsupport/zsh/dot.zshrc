@@ -16,8 +16,11 @@ if ! zgen saved; then
         brian)
             zgen oh-my-zsh custom/themes/brian
             ;;
+        dblack)
+            zgen oh-my-zsh custom/themes/brian
+            ;;
         *)
-            zgen oh-my-zsh themes/cloud
+            zgen oh-my-zsh themes/bira
             ;;
     esac
 
