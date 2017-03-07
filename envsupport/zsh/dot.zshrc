@@ -7,22 +7,18 @@
 source ~/.zgen/zgen.zsh
 
 sys="`uname`"
+user="${USER}"
 # if the init script doesn't exist
 if ! zgen saved; then
     zgen oh-my-zsh
 
     # theme
-    case $USER in
-        brian)
-            zgen oh-my-zsh custom/themes/brian
-            ;;
-        dblack)
-            zgen oh-my-zsh custom/themes/brian
-            ;;
-        *)
-            zgen oh-my-zsh themes/bira
-            ;;
-    esac
+    themefile="`zgen oh-my-zsh custom/themes/${USER}`"
+    if [ -f themefile ]; then
+        zgen oh-my-zsh custom/themes/$USER
+    else 
+        zgen oh-my-zsh themes/bira
+    fi
 
     # plugins
     zgen oh-my-zsh plugins/vi-mode
