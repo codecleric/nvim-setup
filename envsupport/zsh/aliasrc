@@ -30,14 +30,12 @@ alias lal="ll -a"
 # Docker aliases
 alias dg="docker images | grep "
 alias godefault='eval $(docker-machine env default)'
-alias golocal='eval $(docker-machine env isig)'
-alias gosr01='eval $(docker-machine env srdocker01)'
-alias gosr01new='pkill -9 -x -f "ssh -f -N srdocker01.tunnel";ssh -f -N srdocker01.tunnel;export DOCKER_HOST=tcp://localhost:12400; export docker_short=srdocker01'
+alias golocal='dkr-env-reset'
+alias gosr01old='eval $(docker-machine env srdocker01)'
+alias gosr01='pkill -9 -x -f "ssh -f -N -4 srdocker01.tunnel";ssh -f -N -4 srdocker01.tunnel;export DOCKER_HOST=tcp://localhost:12400; export docker_short=srdocker01'
 alias srd="docker images | grep scriberule"
-alias godocker_vm_01="pkill -9 -x -f \"ssh -f -N docker01-vm-tunnel\";ssh -f -N docker01-vm-tunnel;export DOCKER_HOST=tcp://localhost:12376; export docker_short=docker01-vm"
-alias godocker_01="pkill -9 -x -f \"ssh -f -N docker01-tunnel\";ssh -f -N docker01-tunnel;export DOCKER_HOST=tcp://localhost:12377; export docker_short=docker01"
-alias godocker_01_ext="pkill -9 -x -f \"ssh -f -N docker01-tunnel-ext\";ssh -f -N docker01-tunnel-ext;export DOCKER_HOST=tcp://localhost:12377; export docker_short=docker01"
-alias gosrinfra-nodec="pkill -9 -x -f \"ssh -f -N srinfra-nodec.tunnel\";ssh -f -N srinfra-nodec.tunnel;export DOCKER_HOST=tcp://localhost:12380; export docker_short=srinfra-nodec"
+alias godocker01="pkill -9 -x -f \"ssh -f -N -4 docker01-tunnel\";ssh -f -N -4 docker01-tunnel;export DOCKER_HOST=tcp://localhost:12377; export docker_short=docker01"
+alias gosrinfra-nodec="pkill -9 -x -f \"ssh -f -N -4 srinfra-nodec.tunnel\";ssh -f -N -4 srinfra-nodec.tunnel;export DOCKER_HOST=tcp://localhost:12380; export docker_short=srinfra-nodec"
 
 
 dkr-env-reset() { 

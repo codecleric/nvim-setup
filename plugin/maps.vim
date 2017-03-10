@@ -47,3 +47,10 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
+
+" Fix stupid :W from set wrap
+:command WQ wq
+:command Wq wq
+:command W w
+:command wQ wq
+:command Q q
