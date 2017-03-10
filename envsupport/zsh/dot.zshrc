@@ -60,7 +60,7 @@ if ! zgen saved; then
     
     # completions
     zgen load zsh-users/zsh-completions src
-    zgen load tarruda/zsh-autosuggestions
+    #zgen load tarruda/zsh-autosuggestions
 
     # zsh-syntax-highlighting must be at the end
     zgen load zsh-users/zsh-syntax-highlighting
