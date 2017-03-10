@@ -17,7 +17,7 @@ zsh $NVIM_PATH/envsupport/bootstrap.sh
 source "${HOME}/.zshrc"
 
 # Install Custom Theme
-export THEME_PATH="${HOME}/.zgen/robbyrussell/oh-my-zsh-master/zsh_custom/themes"
+export THEME_PATH="${HOME}/.zgen/robbyrussell/oh-my-zsh-master/custom/themes"
 mkdir -p $THEME_PATH
-cp $NVIM_PATH/envsupport/zsh/brian.zsh-theme $THEME_PATH/
+cp $NVIM_PATH/envsupport/zsh/themes/brian.zsh-theme $THEME_PATH/$USER.zsh-theme
 /bin/true

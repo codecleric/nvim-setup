@@ -3,3 +3,4 @@ dein/
 .DS_Store
 bundle/
 cache/
+*swp
