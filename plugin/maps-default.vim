@@ -39,21 +39,3 @@ nmap <C-t>t :tabnew<CR>
 " python stuff
 nmap <Leader>pc :!couchapp push<CR>
 
-"
-" FLoobits
-"
-nmap <Leader>fj :FlooJoinWorkspace https://floobits.com/<who>/<ws name>
-nmap <Leader>fl :FlooLeaveWorkspace<CR>
-nmap <Leader>fn :FlooShareDirPublic .
-nmap <Leader>fs :FlooSummon<CR>
-" Follows the most recent changes
-nmap <Leader>ff :FlooToggleFollowMode<CR>
-
-nmap <Leader>ffu :FlooFollowUser<CR>
-nmap <Leader>fa :FlooAddBuf 
-" Floo browser 
-nmap <Leader>fb :FlooOpenInBrowser<CR>
-" Floo talk (chat really)
-nmap <Leader>ft :FlooSaySomething<CR>
-nmap <Leader>fi :FlooInfo<CR>
-nmap <Leader>fm :FlooListMessages<CR>
