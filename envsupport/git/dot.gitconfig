@@ -1,7 +1,2 @@
-[core]
-	editor = /usr/bin/nvim
-[user]
-	name = Brian Brown
-	email = bbrown@scriberule.com
-[push]
-	default = simple
+[include]
+   path = ~/.gitconfig.local
