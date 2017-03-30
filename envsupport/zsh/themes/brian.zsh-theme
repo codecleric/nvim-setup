@@ -10,7 +10,7 @@ fi
 
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 local docker_host=''
-docker_host='%{$fg[red]%}‹${docker_short}›%{$reset_color%}'
+docker_host='[docker: %{$fg[red]%}${docker_short}%{$reset_color%}]'
 
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 

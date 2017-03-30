@@ -13,10 +13,13 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # theme
-    themefile="`zgen oh-my-zsh custom/themes/${USER}`"
-    if [ -f themefile ]; then
-        zgen oh-my-zsh custom/themes/$USER
+    themefile="/home/${USER}/.zgen/robbyrussell/oh-my-zsh-master/custom/themes/${USER}.zsh-theme"
+    if [ -f ${themefile} ]; then
+        echo "found custom themefile:", $themefile
+        zgen oh-my-zsh custom/themes/${USER}
+        export docker_short="local"
     else 
+        echo "using bira theme"
         zgen oh-my-zsh themes/bira
     fi
 
