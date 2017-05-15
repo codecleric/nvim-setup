@@ -37,6 +37,7 @@ alias srd="docker images | grep scriberule"
 alias gosrinfra-nodec="pkill -9 -x -f \"ssh -f -N -4 srinfra-nodec.tunnel\";ssh -f -N -4 srinfra-nodec.tunnel;export DOCKER_HOST=tcp://localhost:12380; export docker_short=srinfra-nodec"
 alias godock02="pkill -9 -x -f \"ssh -f -N -4 dock02-tunnel\";ssh -f -N -4 dock02-tunnel;export DOCKER_HOST=tcp://localhost:12302; export docker_short=dock02"
 alias godock03="pkill -9 -x -f \"ssh -f -N -4 dock03-tunnel\";ssh -f -N -4 dock03-tunnel;export DOCKER_HOST=tcp://localhost:12303; export docker_short=dock02"
+alias gotemplate="pkill -9 -x -f \"ssh -f -N -4 template-tunnel\";ssh -f -N -4 template-tunnel;export DOCKER_HOST=tcp://localhost:12399; export docker_short=template"
 
 
 dkr-env-reset() { 
