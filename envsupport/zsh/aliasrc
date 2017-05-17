@@ -27,7 +27,7 @@ alias la="ls -a"
 alias ll="ls -l"
 alias lal="ll -a"
 
-# Docker aliases
+# Docker aliases for command line helpers
 function dps() {
   local basecmd="docker ps --format \"\n{{.Names}} \n\timage: {{.Image}}\n\tports: {{.Ports}}\n=============================================\" "
   if [ -n "$1" ]
@@ -37,10 +37,14 @@ function dps() {
     eval ${basecmd}
   fi
 }
-
+alias dsl="docker service ls"
 alias dg="docker images | grep "
-#alias dps="docker ps --format \"\n{{.Names}} \n\timage: {{.Image}}\n\tports: {{.Ports}}\n=============================================\" "
-#alias dpn="dps --filter name="
+alias comp="docker-compose"
+alias stack="docker stack"
+alias std="docker stack deploy -c docker-compose.yml "
+alias stu="docker stack update -c docker-compose.yml "
+
+# Docker aliases for connecting to nodes via ssh
 alias godefault='eval $(docker-machine env default)'
 alias golocal='dkr-env-reset'
 alias gosr01old='eval $(docker-machine env srdocker01)'
