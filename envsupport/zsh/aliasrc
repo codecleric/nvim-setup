@@ -28,7 +28,19 @@ alias ll="ls -l"
 alias lal="ll -a"
 
 # Docker aliases
+function dps() {
+  local basecmd="docker ps --format \"\n{{.Names}} \n\timage: {{.Image}}\n\tports: {{.Ports}}\n=============================================\" "
+  if [ -n "$1" ]
+  then
+    eval ${basecmd}--filter name=${1}
+  else
+    eval ${basecmd}
+  fi
+}
+
 alias dg="docker images | grep "
+#alias dps="docker ps --format \"\n{{.Names}} \n\timage: {{.Image}}\n\tports: {{.Ports}}\n=============================================\" "
+#alias dpn="dps --filter name="
 alias godefault='eval $(docker-machine env default)'
 alias golocal='dkr-env-reset'
 alias gosr01old='eval $(docker-machine env srdocker01)'
