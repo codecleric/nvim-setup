@@ -27,8 +27,24 @@ alias la="ls -a"
 alias ll="ls -l"
 alias lal="ll -a"
 
-# Docker aliases
+# Docker aliases for command line helpers
+function dps() {
+  local basecmd="docker ps --format \"\n{{.Names}} \n\timage: {{.Image}}\n\tports: {{.Ports}}\n=============================================\" "
+  if [ -n "$1" ]
+  then
+    eval ${basecmd}--filter name=${1}
+  else
+    eval ${basecmd}
+  fi
+}
+alias dsl="docker service ls"
 alias dg="docker images | grep "
+alias comp="docker-compose"
+alias stack="docker stack"
+alias std="docker stack deploy -c docker-compose.yml "
+alias stu="docker stack update -c docker-compose.yml "
+
+# Docker aliases for connecting to nodes via ssh
 alias godefault='eval $(docker-machine env default)'
 alias golocal='dkr-env-reset'
 alias gosr01old='eval $(docker-machine env srdocker01)'
@@ -37,6 +53,7 @@ alias srd="docker images | grep scriberule"
 alias gosrinfra-nodec="pkill -9 -x -f \"ssh -f -N -4 srinfra-nodec.tunnel\";ssh -f -N -4 srinfra-nodec.tunnel;export DOCKER_HOST=tcp://localhost:12380; export docker_short=srinfra-nodec"
 alias godock02="pkill -9 -x -f \"ssh -f -N -4 dock02-tunnel\";ssh -f -N -4 dock02-tunnel;export DOCKER_HOST=tcp://localhost:12302; export docker_short=dock02"
 alias godock03="pkill -9 -x -f \"ssh -f -N -4 dock03-tunnel\";ssh -f -N -4 dock03-tunnel;export DOCKER_HOST=tcp://localhost:12303; export docker_short=dock02"
+alias gotemplate="pkill -9 -x -f \"ssh -f -N -4 template-tunnel\";ssh -f -N -4 template-tunnel;export DOCKER_HOST=tcp://localhost:12399; export docker_short=template"
 
 
 dkr-env-reset() { 

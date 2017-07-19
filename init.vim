@@ -64,7 +64,6 @@ call vundle#begin('~/.config/nvim/bundle')
   Plugin 'SirVer/ultisnips'
   " Plugin 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
 
-  Plugin 'floobits/floobits-neovim'
   Plugin 'powerline/powerline'
   Plugin 'sotte/presenting.vim'
   Plugin 'mileszs/ack.vim'

@@ -52,5 +52,4 @@ nmap <D-0> g^
 :command WQ wq
 :command Wq wq
 :command W w
-:command wQ wq
 :command Q q
