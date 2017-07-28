@@ -103,6 +103,7 @@ call vundle#begin('~/.config/nvim/bundle')
   " Themes
   Plugin 'nanotech/jellybeans.vim'
   Plugin 'flazz/vim-colorschemes'
+  Plugin 'drmikehenry/vim-fontsize'
     
 call vundle#end()            " required
 

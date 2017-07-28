@@ -16,10 +16,10 @@ sys="`uname`"
 echo "System is $sys"
 case "$sys" in
     Darwin)
-        alias ls="ls -FG"
+        alias ls="ls -FGh"
         ;;
     Linux)
-        alias ls="ls -F --color=auto"
+        alias ls="ls -Fh --color=auto"
         ;;
 esac
 
@@ -52,7 +52,8 @@ alias gosr01='pkill -9 -x -f "ssh -f -N -4 srdocker01.tunnel";ssh -f -N -4 srdoc
 alias srd="docker images | grep scriberule"
 alias gosrinfra-nodec="pkill -9 -x -f \"ssh -f -N -4 srinfra-nodec.tunnel\";ssh -f -N -4 srinfra-nodec.tunnel;export DOCKER_HOST=tcp://localhost:12380; export docker_short=srinfra-nodec"
 alias godock02="pkill -9 -x -f \"ssh -f -N -4 dock02-tunnel\";ssh -f -N -4 dock02-tunnel;export DOCKER_HOST=tcp://localhost:12302; export docker_short=dock02"
-alias godock03="pkill -9 -x -f \"ssh -f -N -4 dock03-tunnel\";ssh -f -N -4 dock03-tunnel;export DOCKER_HOST=tcp://localhost:12303; export docker_short=dock02"
+alias godock03="pkill -9 -x -f \"ssh -f -N -4 dock03-tunnel\";ssh -f -N -4 dock03-tunnel;export DOCKER_HOST=tcp://localhost:12303; export docker_short=dock03"
+alias godock04="pkill -9 -x -f \"ssh -f -N -4 dock04-tunnel\";ssh -f -N -4 dock04-tunnel;export DOCKER_HOST=tcp://localhost:12304; export docker_short=dock04"
 alias gotemplate="pkill -9 -x -f \"ssh -f -N -4 template-tunnel\";ssh -f -N -4 template-tunnel;export DOCKER_HOST=tcp://localhost:12399; export docker_short=template"
 
 
