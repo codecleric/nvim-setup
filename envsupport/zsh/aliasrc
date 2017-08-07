@@ -107,7 +107,9 @@ bri_dkr_cleanup() { return dkr-cleanup }
 alias aws_ecr_docker_login="eval \$(aws ecr get-login --profile scriberule-ecs-access)"
 
 # zshmarks aliases
-alias sm="showmarks"
+sm() {
+    awk '{split($0,a,"|");$1=a[1]; $2=a[2]; printf "%-20s%s\n",$2,$1}' ~/.bookmarks | sort
+}
 alias bm="bookmark"
 alias dm="deletemark"
 alias j="jump"
