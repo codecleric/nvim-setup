@@ -17,7 +17,7 @@ call vundle#begin('~/.config/nvim/bundle')
   Plugin 'nelstrom/vim-visual-star-search'
   Plugin 'vim-scripts/Rename'
 
-  "Plugin 'ervandew/supertab' NOTE: Trying out YouCompleteMe
+  Plugin 'ervandew/supertab'
   " Brief EasyGrep help https://github.com/vim-scripts/EasyGrep
   "  Keymappings:
 

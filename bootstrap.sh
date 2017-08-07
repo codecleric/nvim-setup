@@ -1,5 +1,6 @@
 #!/bin/zsh
 export NVIM_PATH=${HOME}/.config/nvim
+export VIM_PATH=${HOME}/.config/nvim
 export ENVSUPPORT_PATH=${HOME}/.config/nvim/envsupport
 
 # Fetch zgen for zsh package management
@@ -12,6 +13,10 @@ git clone https://github.com/VundleVim/Vundle.vim.git $NVIM_PATH/bundle/Vundle.v
 
 # Install supporting RC files
 zsh $NVIM_PATH/envsupport/bootstrap.sh
+
+# Install required packages
+echo "Installing fortune and tmux... you will be asked to sudo"
+sudo apt install fortune tmux
 
 # Install zgen packages
 source "${HOME}/.zshrc"

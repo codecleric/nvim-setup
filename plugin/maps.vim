@@ -24,16 +24,18 @@ noremap <C-Q> <C-V>
 cnoremap <C-Q> <C-O><C-V>
 inoremap <C-Q> <C-O><C-V>
 
-" Window motions mapped to Alt-<movement key> and work with terminal
-:tnoremap <A-h> <C-\><C-n><C-w>h
-:tnoremap <A-j> <C-\><C-n><C-w>j
-:tnoremap <A-k> <C-\><C-n><C-w>k
-:tnoremap <A-l> <C-\><C-n><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
+if has("nvim")
+    " Window motions mapped to Alt-<movement key> and work with terminal
+    :tnoremap <A-h> <C-\><C-n><C-w>h
+    :tnoremap <A-j> <C-\><C-n><C-w>j
+    :tnoremap <A-k> <C-\><C-n><C-w>k
+    :tnoremap <A-l> <C-\><C-n><C-w>l
+    :nnoremap <A-h> <C-w>h
+    :nnoremap <A-j> <C-w>j
+    :nnoremap <A-k> <C-w>k
+    :nnoremap <A-l> <C-w>l
 
+endif
 " Use command key with movement keys to navigate wrapped text in
 " a more normal fashion instead of use the 'g' prefix all the time
 vmap <D-j> gj
