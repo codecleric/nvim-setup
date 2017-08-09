@@ -26,10 +26,12 @@ nmap <Leader>vt :TagbarToggle<CR>
 nmap <Leader>vc :TagbarOpenAutoClose<CR>
 
 " NVIM built in terminal
-nmap <Leader>ts :sp term://zsh<CR>
-nmap <Leader>te :e term://zsh<CR> 
-nmap <Leader>tv :vs term://zsh<CR>
-nmap <Leader>tp :sp term://ipython<CR>
+if has("nvim")
+    nmap <Leader>ts :sp term://zsh<CR>
+    nmap <Leader>te :e term://zsh<CR> 
+    nmap <Leader>tv :vs term://zsh<CR>
+    nmap <Leader>tp :sp term://ipython<CR>
+endif
 
 " tab controls
 nmap <C-t>n :tabnext<CR>
