@@ -37,9 +37,10 @@ function dps() {
     eval ${basecmd}
   fi
 }
-function dsl{} {
-  docker service ls | grep -v NAME | awk '{printf "%-50s%s\n", $2,$4}' | sort
+function dsl() {
+  docker service ls | grep -v NAME | awk '{printf "%-50s%-7s%s\n", $2,$4,$6}' | sort
 }
+
 alias dg="docker images | grep "
 alias comp="docker-compose"
 alias stack="docker stack"
