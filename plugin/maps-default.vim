@@ -45,7 +45,7 @@ nmap <Leader>pc :!couchapp push<CR>
 "
 let g:elm_setup_keybindings = 0
 map <Leader>er :ElmRepl<CR>
-map <Leader>em :ElmMakeCurrentFile<CR>
+map <Leader>em :ElmMake<CR>
 map <Leader>eb :ElmMakeMain<CR>
 map <Leader>et :ElmTest<CR>
 map <Leader>ee :ElmErrorDetail<CR>
