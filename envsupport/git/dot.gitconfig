@@ -1,2 +1,6 @@
 [include]
    path = ~/.gitconfig.local
+[webui]
+	autoupdate = true
+[alias]
+	webui = !/home/brian/.git-webui/release/libexec/git-core/git-webui

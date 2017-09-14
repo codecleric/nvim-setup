@@ -41,3 +41,14 @@ nmap <C-t>t :tabnew<CR>
 " python stuff
 nmap <Leader>pc :!couchapp push<CR>
 
+" Elm Stuff
+"
+let g:elm_setup_keybindings = 0
+map <Leader>er :ElmRepl<CR>
+map <Leader>em :ElmMakeCurrentFile<CR>
+map <Leader>eb :ElmMakeMain<CR>
+map <Leader>et :ElmTest<CR>
+map <Leader>ee :ElmErrorDetail<CR>
+map <Leader>ed :ElmShowDocs<CR>
+map <Leader>ew :ElmBrowseDocs<CR>
+map <Leader>ef :ElmFormat<CR>
