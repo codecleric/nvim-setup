@@ -88,7 +88,7 @@ call vundle#begin('~/.config/nvim/bundle')
   "Vim only
   "Plugin 'Shougo/vimproc.vim'
   "Plugin 'Shougo/vimshell.vim'
-  Plugin 'lambdatoast/elm.vim'
+  Plugin 'ElmCast/elm-vim'
   Plugin 'tlib'
   Plugin 'tmboxbrowser'
   Plugin 'elzr/vim-json'
