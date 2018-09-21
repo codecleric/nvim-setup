@@ -1,0 +1,84 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[SurveyReports]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = caa7b21b-e56b-4a1f-a083-62f26179752e
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:27
+      size = 1920, 1145
+      title = npm run watch
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 958
+      ratio = 0.500261096606
+      type = HPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 149
+      ratio = 0.130701754386
+      type = VPaned
+    [[[child5]]]
+      order = 1
+      parent = child3
+      position = 122
+      ratio = 0.123356926188
+      type = VPaned
+    [[[terminal2]]]
+      command = env INIT_CMD="cd ~/Dev/AL/SurveyReports" zsh
+      directory = ~/Dev/AL/SurveyReports
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = caa7b21b-e56b-4a1f-a083-62f26179752e
+    [[[terminal4]]]
+      command = env INIT_CMD="cd ~/Dev/AL/SurveyReports/frontEnd; npm run watch" zsh
+      directory = ~/Dev/AL/SurveyReports/frontEnd
+      order = 0
+      parent = child3
+      profile = default
+      title = frontEnd build
+      type = Terminal
+      uuid = 8f51ae4a-0a16-4dcb-a578-bcaaf3c52331
+    [[[terminal6]]]
+      command = env INIT_CMD="cd ~/Dev/AL/SurveyReports/al-root; source ~/Dev/AL/learningLibrary/bin/activate; python app.py" zsh
+      directory = ~/Dev/AL/SurveyReports/al-root
+      order = 0
+      parent = child5
+      profile = default
+      title = SurveyReports Server
+      type = Terminal
+      uuid = 4bea943b-57af-4282-86bf-7f397e985eab
+    [[[terminal7]]]
+      command = env INIT_CMD="cd ~/Dev/AL/SurveyReports/surveyPlayer; npm run watch" zsh
+      directory = ~/Dev/AL/SurveyReports/surveyPlayer
+      order = 1
+      parent = child5
+      profile = default
+      title = surveyPlayer build
+      type = Terminal
+      uuid = 298369c2-f76a-4372-b4b4-c91bd51d76d3
+[plugins]
+[profiles]
+  [[default]]
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+    exit_action = hold
+    login_shell = True
+    scrollback_infinite = True

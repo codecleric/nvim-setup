@@ -14,8 +14,11 @@ call vundle#begin('~/.config/nvim/bundle')
   Plugin 'tpope/vim-sensible'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-db'
+  Plugin 'tpope/vim-jdaddy'
   Plugin 'nelstrom/vim-visual-star-search'
   Plugin 'vim-scripts/Rename'
+  Plugin 'ludovicchabant/vim-lawrencium'
 
   Plugin 'ervandew/supertab'
   " Brief EasyGrep help https://github.com/vim-scripts/EasyGrep
@@ -88,6 +91,7 @@ call vundle#begin('~/.config/nvim/bundle')
   "Vim only
   "Plugin 'Shougo/vimproc.vim'
   "Plugin 'Shougo/vimshell.vim'
+  Plugin 'gu-fan/simpleterm.vim'
   Plugin 'ElmCast/elm-vim'
   Plugin 'tlib'
   Plugin 'tmboxbrowser'
@@ -98,6 +102,8 @@ call vundle#begin('~/.config/nvim/bundle')
   Plugin 'othree/jsdoc-syntax.vim'
   Plugin 'mxw/vim-jsx'
   Plugin 'moll/vim-node'   " jump through require statements
+  Plugin 'jsy-lang/vim-jsy'
+  Plugin 'PProvost/vim-ps1'
 
   Plugin 'ternjs/tern_for_vim'
   " Themes
@@ -116,13 +122,39 @@ set expandtab shiftwidth=2 tabstop=2
 
 "set modelines=0
 set cursorline
-set paste
+set nopaste
 set nowrap
-"set number
+set number
 set nowritebackup
 set hlsearch
 
 if !empty(glob(expand("~/.nvimlocal.vim")))
    source ~/.nvimlocal.vim
 endif
+
+" learn vimscript the hard way stuff
+"
+" When in insert mode, <leader>Ctrl-u will select the current word, uppercase it and
+" go back into insert mode
+:inoremap <dn><c-u> <esc>viwUi
+
+" When in normal mode, <leader>ev will edit your ~/.vimrc file
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" When in normal mode, <leader>sv will source your ~/.vimrc file
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Surround the visually selected area with quotes
+:vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+
+" Cap H goes to the beginning of the line
+:nnoremap H ^
+" Cap L goes to the end of the line
+:nnoremap L $
+
+"jk to get out of insert mode
+:inoremap jk <esc>
+
+:nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+:vnoremap <leader>' <esc>`>a"<esc>`<i"<esc>lel
 

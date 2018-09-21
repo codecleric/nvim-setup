@@ -45,6 +45,7 @@ if ! zgen saved; then
 
     # github plugins
     zgen load Tarrasch/zsh-autoenv
+    zgen load lukechilds/zsh-nvm
     zgen load jocelynmallon/zshmarks
     ##TODO: error to fix## zgen load yonchu/vimman 
 

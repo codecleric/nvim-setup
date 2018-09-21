@@ -1,5 +1,7 @@
+" ABBREVIATIONs don't work if paste is on!
+set nopaste
 " ABREVIATIONS:
-iab hdr# <C-home># -*- coding: utf-8 -*- vim: set ts=4 sw=4 expandtab:
+iab hdr# <C-home># -*- coding: utf-8 -*- vim: set ts=2 sw=2 expandtab:
 iab ln# #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 iab bk# #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<cr>#~ Title <cr>#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 iab prop# #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<cr>#~ Properties <cr>#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,3 +52,5 @@ iab script# <script type="text/javascript"><cr></script>kA
 iab js# <script type="text/javascript" src=""> </script>11hi
 iab css# <link type="text/css" rel="stylesheet" href="" />4hi
 iab link# <link type="text/css" rel="stylesheet" href="" />4hi
+
+:iabbrev ssig -- <cr>Brian Brown<cr>brian@codecleric.com
