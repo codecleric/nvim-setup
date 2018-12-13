@@ -123,3 +123,7 @@ alias pbpaste="xclip -selection clipboard -o"
 
 # Git additions
 alias gpullall='for E in $(echo `pwd`/*); do cd $E ; echo $E ; git pull ; echo ; done ; cd ..'
+
+# helpful utilities
+# The following requires 'at' and 'sox', 'libsox-fmt-all', as well as the audio file you want to play
+alias teatime='echo "/usr/bin/play ~/Music/Come\ get\ some.mp3" | at now + 4 minutes; echo "/usr/bin/play ~/Music/Who\ wants\ some.mp3" | at now + 5 minutes'

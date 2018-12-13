@@ -5,7 +5,7 @@
 [alias]
 	webui = !/home/brian/.git-webui/release/libexec/git-core/git-webui
 [user]
-	email = bbrown@scriberule.com
+	email = bbrown@econolite.com
 	name = Brian Brown
 [help]
 	autocorrect = 8
