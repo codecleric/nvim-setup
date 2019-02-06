@@ -117,6 +117,8 @@ endif
   Plugin 'moll/vim-node'   " jump through require statements
   Plugin 'jsy-lang/vim-jsy'
   Plugin 'PProvost/vim-ps1'
+  Plugin 'udalov/kotlin-vim'
+  Plugin 'gabrielelana/vim-markdown'
 
   Plugin 'ternjs/tern_for_vim'
   " Themes
