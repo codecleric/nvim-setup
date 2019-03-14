@@ -22,3 +22,5 @@ This will set up a bunch of nvim plugins and a complete zsh setup with zgen.
 SO, it requires nvim, zsh, fortune, and python, if you want to run the
 `bootstrap.sh`. On Windows, you just get a nice vim setup and you won't run the
 `bootstrap.sh`.
+
+Please note, this is my personal vim/nvim setup so there are a bunch of aliases that you won't want or care about :)
