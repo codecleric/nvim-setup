@@ -123,3 +123,4 @@ rbb_init_mega() {
 }
 
 [ -f ~/.zsh.local ] && source ~/.zsh.local
+if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi

@@ -119,12 +119,14 @@ endif
   Plugin 'PProvost/vim-ps1'
   Plugin 'udalov/kotlin-vim'
   Plugin 'gabrielelana/vim-markdown'
+  Plugin 'google/vim-jsonnet'
 
   Plugin 'ternjs/tern_for_vim'
   " Themes
   Plugin 'nanotech/jellybeans.vim'
   Plugin 'flazz/vim-colorschemes'
   Plugin 'drmikehenry/vim-fontsize'
+  Plugin 'nathangrigg/vim-beancount'
     
 call vundle#end()            " required
 
