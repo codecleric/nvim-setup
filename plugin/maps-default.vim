@@ -54,3 +54,5 @@ map <Leader>ew :ElmBrowseDocs<CR>
 map <Leader>ef :ElmFormat<CR>
 
 inoremap <C-R>+ <esc>:set paste<CR>a<C-R>+<esc>:set nopaste<CR>a
+
+map <Leader>fj :%!python -m json.tool<CR>
