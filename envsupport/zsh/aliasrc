@@ -126,4 +126,4 @@ alias gpullall='for E in $(echo `pwd`/*); do cd $E ; echo $E ; git pull ; echo ;
 
 # helpful utilities
 # The following requires 'at' and 'sox', 'libsox-fmt-all', as well as the audio file you want to play
-alias teatime='echo "/usr/bin/play ~/Music/Come\ get\ some.mp3" | at now + 4 minutes; echo "/usr/bin/play ~/Music/Who\ wants\ some.mp3" | at now + 5 minutes'
+alias teatime='echo "/usr/bin/play ~/.config/nvim/envsupport/sound//Come\ get\ some.mp3" | at now + 4 minutes; echo "/usr/bin/play ~/.config/nvim/envsupport/sound//Who\ wants\ some.mp3" | at now + 5 minutes'
