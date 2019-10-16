@@ -4,8 +4,14 @@ export VIM_PATH=${HOME}/.config/nvim
 export ENVSUPPORT_PATH=${HOME}/.config/nvim/envsupport
 #
 # Install required packages
+source /etc/os-release
+
 echo "Installing various packages to support this config... you will be asked to sudo"
-sudo apt-get install -y git fortune tmux at sox libsox-fmt-all
+if test "$ID" = 'ubuntu'; then
+    sudo apt-get install -y git fortune tmux at sox libsox-fmt-all
+elif test "$ID" = 'centos'; then
+    sudo yum install -y git tmux at
+fi
 
 # Fetch zgen for zsh package management
 git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
