@@ -4,3 +4,8 @@
 	autoupdate = true
 [alias]
 	webui = !/home/brian/.git-webui/release/libexec/git-core/git-webui
+[user]
+	email = bbrown@scriberule.com
+	name = Brian Brown
+[help]
+	autocorrect = 8

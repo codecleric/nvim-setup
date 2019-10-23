@@ -1,45 +1,45 @@
 silent echom "Loading Custom Plugin Maps"
-map <Leader>n :NERDTreeToggle<CR>
-map <Leader>nm :NERDTreeMirror<CR>
-map <Leader>nf :NERDTreeFind<CR>
+noremap <Leader>n :NERDTreeToggle<CR>
+noremap <Leader>nm :NERDTreeMirror<CR>
+noremap <Leader>nf :NERDTreeFind<CR>
 
-map <Leader>b :SelectBuf<CR>
+noremap <Leader>b :SelectBuf<CR>
 
-map <Leader>l :lcd %:h<cr>
-map <Leader>lc :cd %:h<cr>
+noremap <Leader>l :lcd %:h<cr>
+noremap <Leader>lc :cd %:h<cr>
 
 " <Leader>g = Fugitive plugin for Git
-map <Leader>gw :Gwrite<CR>
-map <Leader>gc :Gcommit<CR>
-map <Leader>gp :Gpush origin master<CR>
-map <Leader>gs :Gstatus<CR>
-map <Leader>gb :Gblame<CR>
-map <Leader>gf :Gpull<CR>
-map <Leader>gd :Gdiff<CR>
+noremap <Leader>gw :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gp :Gpush origin master<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gf :Gpull<CR>
+noremap <Leader>gd :Gdiff<CR>
 
 " make C-N and C-P move to the next and previous 'error'
-map <C-N> :cn<cr>
-map <C-P> :cp<cr>
+noremap <C-N> :cn<cr>
+noremap <C-P> :cp<cr>
 
 " Toggle the TagList buffer
-nmap <Leader>vt :TagbarToggle<CR>
-nmap <Leader>vc :TagbarOpenAutoClose<CR>
+nnoremap <Leader>vt :TagbarToggle<CR>
+nnoremap <Leader>vc :TagbarOpenAutoClose<CR>
 
 " NVIM built in terminal
 if has("nvim")
-    nmap <Leader>ts :sp term://zsh<CR>
-    nmap <Leader>te :e term://zsh<CR> 
-    nmap <Leader>tv :vs term://zsh<CR>
-    nmap <Leader>tp :sp term://ipython<CR>
+    nnoremap <Leader>ts :sp term://zsh<CR>
+    nnoremap <Leader>te :e term://zsh<CR> 
+    nnoremap <Leader>tv :vs term://zsh<CR>
+    nnoremap <Leader>tp :sp term://ipython<CR>
 endif
 
 " tab controls
-nmap <C-t>n :tabnext<CR>
-nmap <C-t>p :tabprevious<CR> 
-nmap <C-t>t :tabnew<CR>
+nnoremap <C-t>n :tabnext<CR>
+nnoremap <C-t>p :tabprevious<CR> 
+nnoremap <C-t>t :tabnew<CR>
 
 " python stuff
-nmap <Leader>pc :!couchapp push<CR>
+nnoremap <Leader>pc :!couchapp push<CR>
 
 " Elm Stuff
 "
@@ -52,3 +52,5 @@ map <Leader>ee :ElmErrorDetail<CR>
 map <Leader>ed :ElmShowDocs<CR>
 map <Leader>ew :ElmBrowseDocs<CR>
 map <Leader>ef :ElmFormat<CR>
+
+inoremap <C-R>+ <esc>:set paste<CR>a<C-R>+<esc>:set nopaste<CR>a

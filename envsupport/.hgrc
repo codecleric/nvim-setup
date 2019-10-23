@@ -1,0 +1,52 @@
+[ui]
+username = Brian Brown <brian@codecleric.com>
+archivemeta = False
+slash = True
+ignore.shared = ~/.hgignore_shared
+ignore.git = .gitignore
+ssh = ssh -C
+commitsubrepos = False
+paginate = false
+
+
+[auth]
+rc.prefix = 127.0.0.1
+rc.username = brian  
+rc.password = 9e9d9accb4ab675b2bbb5c75be717737fd43474d
+
+[extensions]
+hgext.bookmarks =
+hggit = 
+hgext.color=
+
+[defaults]
+view = --limit 20
+#log = --style=changelog --limit 20
+
+[annotate]
+ignorews = True
+
+[trusted]
+groups = wheel http devel
+users = shane, brian, lking, larry, robbie, brandon
+
+[alias]
+prune = purge
+# short log
+edstat = stat --no-color -n 
+tgrep = grep -r tip 
+igrep = grep -ir tip 
+shelve = record
+
+[diff]
+git = True
+showfunc = True
+
+
+[git]
+intree = True
+
+[web]
+allow_archive = bz2, zip
+#style = monoblue
+
