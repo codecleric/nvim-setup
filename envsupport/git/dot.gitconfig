@@ -1,11 +1,22 @@
-[include]
-   path = ~/.gitconfig.local
 [webui]
 	autoupdate = true
 [alias]
 	webui = !/home/brian/.git-webui/release/libexec/git-core/git-webui
 [user]
-	email = bbrown@scriberule.com
+    ; email = should not be here when using includeIf for email specific
+    ; subdirectories, otherwise two will show up and it will probably
+    ; pick the wrong one :)
 	name = Brian Brown
 [help]
 	autocorrect = 8
+
+[includeIf "gitdir:~/Projects/"]
+   path = ~/Projects/.gitconfig
+
+[credential]
+	helper = cache --timeout 3600
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -4,10 +4,19 @@ set nocompatible              " be iMproved, required
 " Assumes vundler is installed at `${HOME}/.vim/bundle`
 "  > git clone https://github.com/VundleVim/Vundle.vim.git ./bundle/Vundle.vim
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+if has('win32')
+    set rtp+=~/vimfiles/bundle/Vundle.vim
+    let $PATH .= ';' . 'C:/Program Files (x86)/Git/bin'
+else
+    set rtp+=~/.config/nvim/bundle/Vundle.vim
+endif
 
 filetype off                  " required
-call vundle#begin('~/.config/nvim/bundle')
+if has('win32')
+    call vundle#begin('~/vimfiles/bundle')
+else
+    call vundle#begin('~/.config/nvim/bundle')
+endif
  Plugin 'VundleVim/Vundle.vim'
   " General environment improvement
   Plugin 'vim-scripts/genutils'
@@ -76,7 +85,9 @@ call vundle#begin('~/.config/nvim/bundle')
   " Navigation
   Plugin 'scrooloose/nerdtree'
   Plugin 'scrooloose/nerdcommenter'
-  Plugin 'xuyuanp/nerdtree-git-plugin'
+  if !has('win32')
+    Plugin 'xuyuanp/nerdtree-git-plugin'
+  endif
   Plugin 'vim-scripts/SelectBuf'
 
   " Specific stack support
@@ -91,7 +102,9 @@ call vundle#begin('~/.config/nvim/bundle')
   "Vim only
   "Plugin 'Shougo/vimproc.vim'
   "Plugin 'Shougo/vimshell.vim'
-  Plugin 'gu-fan/simpleterm.vim'
+  if !has('win32')
+    Plugin 'gu-fan/simpleterm.vim'
+  endif
   Plugin 'ElmCast/elm-vim'
   Plugin 'tlib'
   Plugin 'tmboxbrowser'
@@ -103,18 +116,25 @@ call vundle#begin('~/.config/nvim/bundle')
   Plugin 'mxw/vim-jsx'
   Plugin 'moll/vim-node'   " jump through require statements
   Plugin 'jsy-lang/vim-jsy'
+  Plugin 'gabrielelana/vim-markdown'
 
   Plugin 'ternjs/tern_for_vim'
   " Themes
   Plugin 'nanotech/jellybeans.vim'
   Plugin 'flazz/vim-colorschemes'
   Plugin 'drmikehenry/vim-fontsize'
+  Plugin 'nathangrigg/vim-beancount'
     
 call vundle#end()            " required
 
 filetype plugin indent on    " required
 
-set noswapfile
+if has('win32')
+    set swapfile
+    set dir=~/.swap-files
+else
+    set noswapfile
+endif
 set nobackup
 
 set expandtab shiftwidth=2 tabstop=2

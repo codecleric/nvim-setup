@@ -3,90 +3,118 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>~/.config/nvim/plugin/maps-default.vim.html</title>
-<meta name="Generator" content="Vim/7.4">
+<meta name="Generator" content="Vim/8.1">
 <meta name="plugin-version" content="vim7.4_v2">
 <meta name="syntax" content="vim">
-<meta name="settings" content="use_css,no_foldcolumn,expand_tabs,prevent_copy=">
-<meta name="colorscheme" content="none">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=">
+<meta name="colorscheme" content="jellybeans">
 <style type="text/css">
 <!--
-pre { font-family: monospace; color: #000000; background-color: #ffffff; }
-body { font-family: monospace; color: #000000; background-color: #ffffff; }
+pre { font-family: monospace; color: #e8e8d3; background-color: #151515; }
+body { font-family: monospace; color: #e8e8d3; background-color: #151515; }
 * { font-size: 1em; }
-.Statement { color: #af5f00; }
-.Comment { color: #0000c0; }
-.Constant { color: #c00000; }
-.Special { color: #c000c0; }
+.String { color: #99ad6a; }
+.Comment { color: #888888; font-style: italic; }
+.LineNr { color: #605958; background-color: #151515; padding-bottom: 1px; }
+.Function { color: #fad07a; }
+.Normal { color: #e8e8d3; background-color: #151515; padding-bottom: 1px; }
+.Constant { color: #cf6a4c; }
+.Delimiter { color: #668799; }
+.Special { color: #799d6a; }
+.Identifier { color: #c6b6ee; }
+.Statement { color: #8197bf; }
 -->
 </style>
 
 <script type='text/javascript'>
 <!--
 
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
 -->
 </script>
 </head>
-<body>
+<body onload='JumpToLine();'>
 <pre id='vimCodeElement'>
-<span class="Statement">silent</span> <span class="Statement">echom</span> <span class="Constant">&quot;Loading Custom Plugin Maps&quot;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>n :NERDTreeToggle<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>nm :NERDTreeMirror<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>nf :NERDTreeFind<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>b :SelectBuf<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>l :lcd %:h<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>lc :cd %:h<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
-
-<span class="Comment">&quot; &lt;Leader&gt;g = Fugitive plugin for Git</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gw :Gwrite<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gc :Gcommit<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gp :Gpush origin master<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gs :Gstatus<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gb :Gblame<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gf :Gpull<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>gd :Gdiff<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Comment">&quot; make C-N and C-P move to the next and previous 'error'</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-N</span><span class="Special">&gt;</span> :cn<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
-<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-P</span><span class="Special">&gt;</span> :cp<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
-
-<span class="Comment">&quot; Toggle the TagList buffer</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>vt :TagbarToggle<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>vc :TagbarOpenAutoClose<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Comment">&quot; NVIM built in terminal</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ts :sp term://zsh<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>te :e term://zsh<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>tv :vs term://zsh<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>tp :sp term://ipython<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Comment">&quot; tab controls</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span>n :tabnext<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span>p :tabprevious<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span>t :tabnew<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Comment">&quot; python stuff</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>pc :!couchapp push<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Comment">&quot;</span>
-<span class="Comment">&quot; FLoobits</span>
-<span class="Comment">&quot;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fj :FlooJoinWorkspace <a href="https://floobits.com/">https://floobits.com/</a>&lt;who&gt;/&lt;ws name&gt;
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fl :FlooLeaveWorkspace<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fn :FlooShareDirPublic .
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fs :FlooSummon<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Comment">&quot; Follows the most recent changes</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ff :FlooToggleFollowMode<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ffu :FlooFollowUser<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fa :FlooAddBuf
-<span class="Comment">&quot; Floo browser </span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fb :FlooOpenInBrowser<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Comment">&quot; Floo talk (chat really)</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>ft :FlooSaySomething<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fi :FlooInfo<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
-<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>fm :FlooListMessages<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span id="L1" class="LineNr"> 1 </span><span class="Statement">silent</span> <span class="Statement">echom</span> <span class="String">&quot;Loading Custom Plugin Maps</span><span class="String">&quot;</span>
+<span id="L2" class="LineNr"> 2 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>n :NERDTreeToggle<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L3" class="LineNr"> 3 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>nm :NERDTreeMirror<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L4" class="LineNr"> 4 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>nf :NERDTreeFind<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L5" class="LineNr"> 5 </span>
+<span id="L6" class="LineNr"> 6 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>b :SelectBuf<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L7" class="LineNr"> 7 </span>
+<span id="L8" class="LineNr"> 8 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>l :lcd %:h<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L9" class="LineNr"> 9 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>lc :cd %:h<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L10" class="LineNr">10 </span>
+<span id="L11" class="LineNr">11 </span><span class="Comment">&quot; &lt;Leader&gt;g = Fugitive plugin for Git</span>
+<span id="L12" class="LineNr">12 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>gw :Gwrite<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L13" class="LineNr">13 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>gc :Gcommit<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L14" class="LineNr">14 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>gp :Gpush origin master<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L15" class="LineNr">15 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>gs :Gstatus<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L16" class="LineNr">16 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>gb :Gblame<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L17" class="LineNr">17 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>gf :Gpull<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L18" class="LineNr">18 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>gd :Gdiff<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L19" class="LineNr">19 </span>
+<span id="L20" class="LineNr">20 </span><span class="Comment">&quot; make C-N and C-P move to the next and previous 'error'</span>
+<span id="L21" class="LineNr">21 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">C-N</span><span class="Delimiter">&gt;</span> :cn<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L22" class="LineNr">22 </span><span class="Statement">noremap</span> <span class="Delimiter">&lt;</span><span class="Special">C-P</span><span class="Delimiter">&gt;</span> :cp<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L23" class="LineNr">23 </span>
+<span id="L24" class="LineNr">24 </span><span class="Comment">&quot; Toggle the TagList buffer</span>
+<span id="L25" class="LineNr">25 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>vt :TagbarToggle<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L26" class="LineNr">26 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>vc :TagbarOpenAutoClose<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L27" class="LineNr">27 </span>
+<span id="L28" class="LineNr">28 </span><span class="Comment">&quot; NVIM built in terminal</span>
+<span id="L29" class="LineNr">29 </span><span class="Statement">if</span> <span class="Function">has</span><span class="Delimiter">(</span><span class="String">&quot;nvim</span><span class="String">&quot;</span><span class="Delimiter">)</span>
+<span id="L30" class="LineNr">30 </span>    <span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>ts :sp term://zsh<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L31" class="LineNr">31 </span>    <span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>te :e term://zsh<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L32" class="LineNr">32 </span>    <span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>tv :vs term://zsh<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L33" class="LineNr">33 </span>    <span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>tp :sp term://ipython<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L34" class="LineNr">34 </span><span class="Statement">endif</span>
+<span id="L35" class="LineNr">35 </span>
+<span id="L36" class="LineNr">36 </span><span class="Comment">&quot; tab controls</span>
+<span id="L37" class="LineNr">37 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">C-t</span><span class="Delimiter">&gt;</span>n :tabnext<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L38" class="LineNr">38 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">C-t</span><span class="Delimiter">&gt;</span>p :tabprevious<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L39" class="LineNr">39 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">C-t</span><span class="Delimiter">&gt;</span>t :tabnew<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L40" class="LineNr">40 </span>
+<span id="L41" class="LineNr">41 </span><span class="Comment">&quot; python stuff</span>
+<span id="L42" class="LineNr">42 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>pc :!couchapp push<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L43" class="LineNr">43 </span>
+<span id="L44" class="LineNr">44 </span><span class="Comment">&quot; Elm Stuff</span>
+<span id="L45" class="LineNr">45 </span><span class="Comment">&quot;</span>
+<span id="L46" class="LineNr">46 </span><span class="Statement">let</span> <span class="Identifier">g:elm_setup_keybindings</span> <span class="Normal">=</span> <span class="Constant">0</span>
+<span id="L47" class="LineNr">47 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>er :ElmRepl<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L48" class="LineNr">48 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>em :ElmMake<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L49" class="LineNr">49 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>eb :ElmMakeMain<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L50" class="LineNr">50 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>et :ElmTest<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L51" class="LineNr">51 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>ee :ElmErrorDetail<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L52" class="LineNr">52 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>ed :ElmShowDocs<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L53" class="LineNr">53 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>ew :ElmBrowseDocs<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L54" class="LineNr">54 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>ef :ElmFormat<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L55" class="LineNr">55 </span>
+<span id="L56" class="LineNr">56 </span><span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">C-R</span><span class="Delimiter">&gt;</span>+ <span class="Delimiter">&lt;</span><span class="Special">esc</span><span class="Delimiter">&gt;</span>:set paste<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>a<span class="Delimiter">&lt;</span><span class="Special">C-R</span><span class="Delimiter">&gt;</span>+<span class="Delimiter">&lt;</span><span class="Special">esc</span><span class="Delimiter">&gt;</span>:set nopaste<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>a
+<span id="L57" class="LineNr">57 </span>
+<span id="L58" class="LineNr">58 </span><span class="Statement">map</span> <span class="Delimiter">&lt;</span><span class="Special">Leader</span><span class="Delimiter">&gt;</span>fj :%!python -m json.tool<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
 </pre>
 </body>
 </html>
