@@ -1,13 +1,13 @@
 # TLDR;
 
 ## Linux
-    git clone https://bitbucket.org/codecleric/nvim-setup.git ~/.config/nvim
+    git clone https://github.com/codecleric/nvim-setup.git ~/.config/nvim
     
     cd ~/.config/nvim
     ./bootstap.sh
 
 ## windows (git bash)
-    git clone https://bitbucket.org/codecleric/nvim-setup.git ~/vimfiles
+    git clone https://github.com/codecleric/nvim-setup.git ~/vimfiles
     cp ~/vimfiles/init.vim ~/.vimrc
     # edit the .vimrc to change the path from .config/vim
 
