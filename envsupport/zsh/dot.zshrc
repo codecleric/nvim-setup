@@ -123,5 +123,7 @@ rbb_init_mega() {
   cd $PWD
 }
 
+export PATH=~/.local/bin:${PATH}
+
 [ -f ~/.zsh.local ] && source ~/.zsh.local
 [ -f /usr/bin/kubectl ] && source <(kubectl completion zsh)
