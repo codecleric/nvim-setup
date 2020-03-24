@@ -8,9 +8,9 @@ source /etc/os-release
 
 echo "Installing various packages to support this config... you will be asked to sudo"
 if test "$ID" = 'ubuntu'; then
-    sudo apt-get install -y git fortune tmux at sox libsox-fmt-all
+    sudo apt-get install -y git fortune tmux at sox libsox-fmt-all pipx
 elif test "$ID" = 'centos'; then
-    sudo yum install -y git tmux at
+    sudo yum install -y git tmux at pipx
 fi
 
 # Fetch zgen for zsh package management
