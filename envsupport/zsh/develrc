@@ -9,11 +9,11 @@ esac
 
 function gvl() { nvim-qt --serverlist "$*"}
 function gv() { 
-    nvim-qt --servername $1 --remote-send ":vs<RETURN>"
-    nvim-qt --servername $1 --remote-silent $2 
+    gvim --servername $1 --remote-send ":vs<RETURN>"
+    gvim --servername $1 --remote-silent $2 
     }
-function gvt() { nvim-qt --servername $1 --remote-tab-silent $*[2,-1] }
-function gva() { nvim-qt --servername $1 $*[2,-1] }
+function gvt() { gvim --servername $1 --remote-tab-silent $*[2,-1] }
+function gva() { gvim --servername $1 $*[2,-1] }
 
 function todevel() { scp $1 brian@10.25.80.62: }
 function fromdevel() { scp brian@10.25.80.62:$1 . }

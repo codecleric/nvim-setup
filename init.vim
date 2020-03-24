@@ -28,6 +28,7 @@ endif
   Plugin 'nelstrom/vim-visual-star-search'
   Plugin 'vim-scripts/Rename'
   Plugin 'ludovicchabant/vim-lawrencium'
+  Plugin 'ludovicchabant/vim-gutentags'
 
   Plugin 'ervandew/supertab'
   " Brief EasyGrep help https://github.com/vim-scripts/EasyGrep
@@ -119,6 +120,7 @@ endif
   Plugin 'gabrielelana/vim-markdown'
 
   Plugin 'ternjs/tern_for_vim'
+
   " Themes
   Plugin 'nanotech/jellybeans.vim'
   Plugin 'flazz/vim-colorschemes'
@@ -126,7 +128,7 @@ endif
   Plugin 'nathangrigg/vim-beancount'
     
 call vundle#end()            " required
-
+let g:tern#command = systemlist('nvm which current')
 filetype plugin indent on    " required
 
 if has('win32')
