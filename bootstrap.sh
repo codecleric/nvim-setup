@@ -8,10 +8,13 @@ source /etc/os-release
 
 echo "Installing various packages to support this config... you will be asked to sudo"
 if test "$ID" = 'ubuntu'; then
-    sudo apt-get install -y git fortune tmux at sox libsox-fmt-all pipx
+    sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags
 elif test "$ID" = 'centos'; then
-    sudo yum install -y git tmux at pipx
+    sudo yum install -y zsh git tmux at pipx curl ctags
 fi
+
+# Fetch oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Fetch zgen for zsh package management
 git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
