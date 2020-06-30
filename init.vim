@@ -29,6 +29,7 @@ endif
   Plugin 'vim-scripts/Rename'
   Plugin 'ludovicchabant/vim-lawrencium'
   Plugin 'ludovicchabant/vim-gutentags'
+  Plugin 'ryanoasis/vim-devicons'
 
   Plugin 'ervandew/supertab'
   " Brief EasyGrep help https://github.com/vim-scripts/EasyGrep
@@ -130,6 +131,7 @@ endif
 call vundle#end()            " required
 let g:tern#command = systemlist('nvm which current')
 filetype plugin indent on    " required
+set encoding=UTF-8
 
 if has('win32')
     set swapfile

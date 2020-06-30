@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+
+fif() {
+    if let $#==0 
+    then
+        echo "find in files - pass a file extension and text to search for"
+        echo "usage: fif ext searchtext"
+    else
+        local theExt=$1
+        shift
+        find . -name "*${ext}" -type f -exec grep -nH --color=auto "$@" {} \;
+    
+    fi
+}
+

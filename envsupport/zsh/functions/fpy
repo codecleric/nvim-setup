@@ -1,0 +1,11 @@
+#!/usr/bin/zsh
+
+fpy() {
+    if let $#==0
+    then
+        echo "find in python files - pass a text to search for"
+        echo "usage: fpy searchtext"
+    else
+        find . -name '*py' -type f -exec grep --color=auto -nH "$@" {} \;
+    fi
+}

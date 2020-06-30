@@ -44,7 +44,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/gitignore
 
     # github plugins
-    zgen load Tarrasch/zsh-autoenv
     zgen load lukechilds/zsh-nvm
     zgen load jocelynmallon/zshmarks
     ##TODO: error to fix## zgen load yonchu/vimman 
@@ -76,8 +75,8 @@ fi
 source ~/.config/nvim/envsupport/zsh/aliasrc
 source ~/.config/nvim/envsupport/zsh/develrc
 
-[[ -a /usr/local/bin/task ]] && source ~/.config/nvim/envsupport/zsh/taskrc
-
+export FPATH=$FPATH:~/.config/nvim/envsupport/zsh/functions
+autoload -Uz fpy fif
 set -o vi
 setopt histreduceblanks
 setopt no_share_history
@@ -124,8 +123,10 @@ rbb_init_mega() {
 }
 
 export PATH=~/.local/bin:${PATH}
+export TERM=xterm-256color
 
 [ -f ~/.zsh.local ] && source ~/.zsh.local
 [ -f /usr/bin/kubectl ] && source <(kubectl completion zsh)
+[ -f /usr/bin/direnv ] && eval "$(direnv hook zsh)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
