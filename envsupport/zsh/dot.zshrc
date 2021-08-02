@@ -81,6 +81,12 @@ set -o vi
 setopt histreduceblanks
 setopt no_share_history
 
+# IF you need to make my local laptop keyboard have the 
+# Super Key next to the SpaceBar - swap alt_win in this case
+# Find out what the internal keyboard ID is with: xinput
+# Put this in the ~/.zsh.local
+#setxkbmap -option altwin:swap_alt_win -device 15
+
 case "$sys" in
     Linux)
         setxkbmap -layout us -option ctrl:nocaps
