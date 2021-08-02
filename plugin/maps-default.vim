@@ -55,4 +55,4 @@ map <Leader>ef :ElmFormat<CR>
 
 inoremap <C-R>+ <esc>:set paste<CR>a<C-R>+<esc>:set nopaste<CR>a
 
-map <Leader>fj :%!python -m json.tool<CR>
+map <Leader>fj :%!python3 -m json.tool<CR>

@@ -6,6 +6,7 @@ alias rmpyc="find . -name '*.py[co]' -delete"
 alias rmgrep="find . -name '*.grep' -delete"
 alias rmtodo="find . -name '*.todo' -delete"
 
+alias fd=fdfind
 alias py25="python2.5"
 alias py26="python2.6"
 alias py27="python2.7"
