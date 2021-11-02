@@ -42,6 +42,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/gitfast
     zgen oh-my-zsh plugins/git-extras
     zgen oh-my-zsh plugins/gitignore
+    zgen oh-my-zsh plugins/pdm
 
     # github plugins
     zgen load lukechilds/zsh-nvm

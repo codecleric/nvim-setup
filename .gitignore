@@ -1,6 +1,7 @@
 dein/
 *~
+tags
 .DS_Store
-bundle/
+plugged/
 cache/
 *swp

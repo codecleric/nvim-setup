@@ -1,37 +1,29 @@
 let mapleader = ","
 set nocompatible              " be iMproved, required
 
-" Assumes vundler is installed at `${HOME}/.vim/bundle`
-"  > git clone https://github.com/VundleVim/Vundle.vim.git ./bundle/Vundle.vim
-" set the runtime path to include Vundle and initialize
-if has('win32')
-    set rtp+=~/vimfiles/bundle/Vundle.vim
-    let $PATH .= ';' . 'C:/Program Files (x86)/Git/bin'
-else
-    set rtp+=~/.config/nvim/bundle/Vundle.vim
-endif
+" Assumes vim-plug is installed at `${HOME}/.vim/autoload`
+"  > https://github.com/junegunn/vim-plug
 
 filetype off                  " required
 if has('win32')
-    call vundle#begin('~/vimfiles/bundle')
+    call plug#begin('~/vimfiles/plugged')
 else
-    call vundle#begin('~/.config/nvim/bundle')
+    call plug#begin('~/.config/nvim/plugged')
 endif
- Plugin 'VundleVim/Vundle.vim'
   " General environment improvement
-  Plugin 'vim-scripts/genutils'
-  Plugin 'tpope/vim-sensible'
-  Plugin 'tpope/vim-surround'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-db'
-  Plugin 'tpope/vim-jdaddy'
-  Plugin 'nelstrom/vim-visual-star-search'
-  Plugin 'vim-scripts/Rename'
-  Plugin 'ludovicchabant/vim-lawrencium'
-  Plugin 'ludovicchabant/vim-gutentags'
-  Plugin 'ryanoasis/vim-devicons'
+  Plug 'vim-scripts/genutils'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-db'
+  Plug 'tpope/vim-jdaddy'
+  Plug 'nelstrom/vim-visual-star-search'
+  Plug 'vim-scripts/Rename'
+  Plug 'ludovicchabant/vim-lawrencium'
+  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'ryanoasis/vim-devicons'
 
-  Plugin 'ervandew/supertab'
+  Plug 'ervandew/supertab'
   " Brief EasyGrep help https://github.com/vim-scripts/EasyGrep
   "  Keymappings:
 
@@ -68,67 +60,63 @@ endif
 
         ":GrepOptions [arg]
             "Open a window to set grep options.
-  Plugin 'vim-scripts/EasyGrep'
+  Plug 'vim-scripts/EasyGrep'
 
   " Need to have exuberant ctags installed for tagbar
-  Plugin 'majutsushi/tagbar'
+  Plug 'majutsushi/tagbar'
 
   " UtiliSnips; https://github.com/SirVer/ultisnips
   "   also see https://github.com/panozzaj/conf/blob/master/common/.vim/UltiSnips/javascript.snippets
-  Plugin 'SirVer/ultisnips'
-  " Plugin 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
+  Plug 'SirVer/ultisnips'
 
-  Plugin 'powerline/powerline'
-  Plugin 'sotte/presenting.vim'
-  Plugin 'mileszs/ack.vim'
-  Plugin 'aquach/vim-http-client'
-  Plugin 'Keithbsmiley/investigate.vim'
+  Plug 'powerline/powerline'
+  Plug 'sotte/presenting.vim'
+  Plug 'mileszs/ack.vim'
+  Plug 'aquach/vim-http-client'
+  Plug 'Keithbsmiley/investigate.vim'
 
   " Navigation
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'scrooloose/nerdcommenter'
+  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdcommenter'
   if !has('win32')
-    Plugin 'xuyuanp/nerdtree-git-plugin'
+    Plug 'xuyuanp/nerdtree-git-plugin'
   endif
-  Plugin 'vim-scripts/SelectBuf'
+  Plug 'vim-scripts/SelectBuf'
 
   " Specific stack support
-  Plugin 'chrisbra/csv.vim'
-  Plugin 'hashivim/vim-hashicorp-tools'
-  Plugin 'b4b4r07/vim-hcl'
-  Plugin 'kchmck/vim-coffee-script'
-  "Plugin 'IN3D/vim-raml'
-  Plugin 'ekalinin/Dockerfile.vim'
-  "Plugin 'nicr9/vim-orca'
+  Plug 'chrisbra/csv.vim'
+  Plug 'hashivim/vim-hashicorp-tools'
+  Plug 'b4b4r07/vim-hcl'
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'ekalinin/Dockerfile.vim'
+  "Plug 'nicr9/vim-orca'
   "
   "Vim only
   "Plugin 'Shougo/vimproc.vim'
   "Plugin 'Shougo/vimshell.vim'
   if !has('win32')
-    Plugin 'gu-fan/simpleterm.vim'
+    Plug 'gu-fan/simpleterm.vim'
   endif
-  Plugin 'ElmCast/elm-vim'
-  Plugin 'tlib'
-  Plugin 'tmboxbrowser'
-  Plugin 'elzr/vim-json'
-  Plugin 'othree/yajs.vim'
-  Plugin 'othree/es.next.syntax.vim'
-  Plugin 'othree/javascript-libraries-syntax.vim'
-  Plugin 'othree/jsdoc-syntax.vim'
-  Plugin 'mxw/vim-jsx'
-  Plugin 'moll/vim-node'   " jump through require statements
-  Plugin 'jsy-lang/vim-jsy'
-  Plugin 'gabrielelana/vim-markdown'
+  Plug 'tlib'
+  Plug 'elzr/vim-json'
+  Plug 'othree/yajs.vim'
+  Plug 'othree/es.next.syntax.vim'
+  Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'othree/jsdoc-syntax.vim'
+  "Plug 'mxw/vim-jsx'
+  Plug 'moll/vim-node'   " jump through require statements
+  Plug 'jsy-lang/vim-jsy'
+  Plug 'gabrielelana/vim-markdown'
 
-  Plugin 'ternjs/tern_for_vim'
+  Plug 'ternjs/tern_for_vim'
 
   " Themes
-  Plugin 'nanotech/jellybeans.vim'
-  Plugin 'flazz/vim-colorschemes'
-  Plugin 'drmikehenry/vim-fontsize'
-  Plugin 'nathangrigg/vim-beancount'
+  Plug 'nanotech/jellybeans.vim'
+  Plug 'flazz/vim-colorschemes'
+  Plug 'drmikehenry/vim-fontsize'
+  "Plug 'nathangrigg/vim-beancount'
     
-call vundle#end()            " required
+call plug#end()            " required
 let g:tern#command = systemlist('nvm which current')
 filetype plugin indent on    " required
 set encoding=UTF-8

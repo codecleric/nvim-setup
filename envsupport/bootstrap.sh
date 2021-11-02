@@ -20,6 +20,7 @@ if [[ -n $ENVSUPPORT_PATH ]]; then
     mkdir -p ~/.vim
     ln -fs ~/.config/nvim/bundle ~/.vim/bundle
     ln -fs ~/.config/nvim/plugin ~/.vim/plugin
+    ln -fs ~/.config/nvim/autoload ~/.vim/autoload
     echo '# add local shell changes here' >>  ~/.zsh.local
     echo '" Add local vim settings here ' >> ~/.nvimlocal.vim
     popd

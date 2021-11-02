@@ -22,3 +22,5 @@
 	required = true
 [http]
 	sslverify = false
+[init]
+	defaultBranch = master
