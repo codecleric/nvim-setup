@@ -17,10 +17,9 @@ endif
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-db'
   Plug 'tpope/vim-jdaddy'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-dadbod'
   Plug 'nelstrom/vim-visual-star-search'
-  Plug 'vim-scripts/Rename'
-  Plug 'ludovicchabant/vim-lawrencium'
-  Plug 'ludovicchabant/vim-gutentags'
   Plug 'ryanoasis/vim-devicons'
 
   Plug 'ervandew/supertab'
