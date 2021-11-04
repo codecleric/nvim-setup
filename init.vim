@@ -20,6 +20,9 @@ endif
   Plug 'tpope/vim-dadbod'
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'ap/vim-css-color'
+  Plug 'itchyny/lightline.vim'
+  Plug 'mhinz/vim-startify'
   "Plug ''
 
   Plug 'ervandew/supertab'
@@ -58,7 +61,7 @@ endif
   "Plugin 'Shougo/vimproc.vim'
   "Plugin 'Shougo/vimshell.vim'
   if !has('win32')
-    Plug 'gu-fan/simpleterm.vim'
+    Plug 'codecleric/simpleterm.vim'
   endif
   Plug 'elzr/vim-json'
   Plug 'othree/yajs.vim'
@@ -115,7 +118,8 @@ set wildmode=full
 :inoremap <dn><c-u> <esc>viwUi
 
 " When in normal mode, <leader>ev will edit your ~/.vimrc file
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+":nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 
 " When in normal mode, <leader>sv will source your ~/.vimrc file
 :nnoremap <leader>sv :source $MYVIMRC<cr>
