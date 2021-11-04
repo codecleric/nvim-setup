@@ -11,7 +11,7 @@ noremap <Leader>lc :cd %:h<cr>
 " <Leader>g = Fugitive plugin for Git
 noremap <Leader>gw :Gwrite<CR>
 noremap <Leader>gc :Git commit<CR>
-noremap <Leader>gp :Gpush origin master<CR>
+noremap <Leader>gp :Git push origin master<CR>
 noremap <Leader>gs :Git status<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gf :Gpull<CR>
