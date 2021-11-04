@@ -10,9 +10,9 @@ noremap <Leader>lc :cd %:h<cr>
 
 " <Leader>g = Fugitive plugin for Git
 noremap <Leader>gw :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gc :Git commit<CR>
 noremap <Leader>gp :Gpush origin master<CR>
-noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gs :Git status<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gf :Gpull<CR>
 noremap <Leader>gd :Gdiff<CR>
@@ -41,18 +41,12 @@ nnoremap <C-t>t :tabnew<CR>
 " python stuff
 nnoremap <Leader>pc :!couchapp push<CR>
 
-" Elm Stuff
-"
-let g:elm_setup_keybindings = 0
-map <Leader>er :ElmRepl<CR>
-map <Leader>em :ElmMake<CR>
-map <Leader>eb :ElmMakeMain<CR>
-map <Leader>et :ElmTest<CR>
-map <Leader>ee :ElmErrorDetail<CR>
-map <Leader>ed :ElmShowDocs<CR>
-map <Leader>ew :ElmBrowseDocs<CR>
-map <Leader>ef :ElmFormat<CR>
-
 inoremap <C-R>+ <esc>:set paste<CR>a<C-R>+<esc>:set nopaste<CR>a
 
 map <Leader>fj :%!python3 -m json.tool<CR>
+
+" session stuff
+"https://dockyard.com/blog/2018/06/01/simple-vim-session-management-part-1
+let g:sessions_dir = "~/.vim/sessions"
+exec 'nnoremap <Leader>ss :mks! '  . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so '  . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'

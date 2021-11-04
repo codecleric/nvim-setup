@@ -11,7 +11,6 @@ else
     call plug#begin('~/.config/nvim/plugged')
 endif
   " General environment improvement
-  Plug 'vim-scripts/genutils'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
@@ -21,45 +20,9 @@ endif
   Plug 'tpope/vim-dadbod'
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'ryanoasis/vim-devicons'
+  "Plug ''
 
   Plug 'ervandew/supertab'
-  " Brief EasyGrep help https://github.com/vim-scripts/EasyGrep
-  "  Keymappings:
-
-        "<Leader>vv  - Grep for the word under the cursor, match all occurences,
-                    "like |gstar|
-        "<Leader>vV  - Grep for the word under the cursor, match whole word, like 
-                    "|star|
-        "<Leader>va  - Like vv, but add to existing list
-        "<Leader>vA  - Like vV, but add to existing list
-        "<Leader>vr  - Perform a global search search on the word under the cursor
-                    "and prompt for a pattern with which to replace it.
-        "<Leader>vo  - Select the files to search in and set grep options
-
-    " Commands:
-
-        ":Grep [arg]
-            "Search for the specified arg, like <Leader>vv.  When an ! is added,
-            "search like <Leader>vV
-
-        ":GrepAdd [arg]
-            "Search for the specified arg, add to existing file list, as in
-            "<Leader>va.  When an ! is added, search like <Leader>vA
-
-        ":Replace [target] [replacement]
-            "Perform a global search and replace.  The function searches
-            "the same set of files a grep for the desired target and opens a dialog to
-            "confirm replacement.
-        
-        ":ReplaceUndo
-            "Undoes the last :Replace operation.  Does not stack successive
-            "searches; only the last replace may be undone.  This function may not
-            "work well when edits are made between a call to Replace and a call to
-            "ReplaceUndo.
-
-        ":GrepOptions [arg]
-            "Open a window to set grep options.
-  Plug 'vim-scripts/EasyGrep'
 
   " Need to have exuberant ctags installed for tagbar
   Plug 'majutsushi/tagbar'
@@ -80,6 +43,7 @@ endif
   if !has('win32')
     Plug 'xuyuanp/nerdtree-git-plugin'
   endif
+  Plug 'vim-scripts/genutils'
   Plug 'vim-scripts/SelectBuf'
 
   " Specific stack support
@@ -96,7 +60,6 @@ endif
   if !has('win32')
     Plug 'gu-fan/simpleterm.vim'
   endif
-  Plug 'tlib'
   Plug 'elzr/vim-json'
   Plug 'othree/yajs.vim'
   Plug 'othree/es.next.syntax.vim'
@@ -141,6 +104,9 @@ set hlsearch
 if !empty(glob(expand("~/.nvimlocal.vim")))
    source ~/.nvimlocal.vim
 endif
+
+set wildmenu
+set wildmode=full
 
 " learn vimscript the hard way stuff
 "
