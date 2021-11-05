@@ -21,9 +21,12 @@ endif
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'ryanoasis/vim-devicons'
   Plug 'ap/vim-css-color'
-  Plug 'itchyny/lightline.vim'
   Plug 'mhinz/vim-startify'
   "Plug ''
+  "status line
+  "
+  "Plug 'powerline/powerline'
+  Plug 'itchyny/lightline.vim'
 
   Plug 'ervandew/supertab'
 
@@ -34,7 +37,6 @@ endif
   "   also see https://github.com/panozzaj/conf/blob/master/common/.vim/UltiSnips/javascript.snippets
   Plug 'SirVer/ultisnips'
 
-  Plug 'powerline/powerline'
   Plug 'sotte/presenting.vim'
   Plug 'mileszs/ack.vim'
   Plug 'aquach/vim-http-client'
