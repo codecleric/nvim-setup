@@ -65,14 +65,22 @@ endif
   if !has('win32')
     Plug 'codecleric/simpleterm.vim'
   endif
-  Plug 'elzr/vim-json'
-  Plug 'othree/yajs.vim'
-  Plug 'othree/es.next.syntax.vim'
-  Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'othree/jsdoc-syntax.vim'
-  "Plug 'mxw/vim-jsx'
-  Plug 'moll/vim-node'   " jump through require statements
+  "Plug 'elzr/vim-json'
+  "
+" JavaScript stack -- updated from https://davidosomething.com/blog/vim-for-javascript/
   Plug 'jsy-lang/vim-jsy'
+  Plug 'jelera/vim-javascript-syntax'
+  " Plug 'mxw/vim-jsx'
+  Plug 'moll/vim-node'   " jump through require statements
+
+  Plug 'wavded/vim-stylus'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'gutenye/json5.vim'
+
+  Plug 'ap/vim-css-color'
+  Plug 'Quramy/vim-js-pretty-template'
+" End JavaScript stack
+"
   Plug 'gabrielelana/vim-markdown'
 
   Plug 'ternjs/tern_for_vim'
