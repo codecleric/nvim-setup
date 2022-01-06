@@ -129,7 +129,7 @@ rbb_init_mega() {
   cd $PWD
 }
 
-export PATH=~/.local/bin:${PATH}
+export PATH=~/.local/bin:~/Apps:${PATH}
 export TERM=xterm-256color
 
 [ -f ~/.zsh.local ] && source ~/.zsh.local

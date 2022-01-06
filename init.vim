@@ -57,6 +57,7 @@ endif
   Plug 'b4b4r07/vim-hcl'
   Plug 'kchmck/vim-coffee-script'
   Plug 'ekalinin/Dockerfile.vim'
+  Plug 'neo4j-contrib/cypher-vim-syntax'
   "Plug 'nicr9/vim-orca'
   "
   "Vim only

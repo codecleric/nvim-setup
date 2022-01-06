@@ -7,11 +7,6 @@ alias rmgrep="find . -name '*.grep' -delete"
 alias rmtodo="find . -name '*.todo' -delete"
 
 alias fd=fdfind
-alias py25="python2.5"
-alias py26="python2.6"
-alias py27="python2.7"
-alias py="python3"
-alias ipy="ipython"
 
 sys="`uname`"
 echo "System is $sys"
@@ -24,9 +19,6 @@ case "$sys" in
         ;;
 esac
 
-alias la="ls -a"
-alias ll="ls -l"
-alias lal="ll -a"
 
 # Docker aliases for command line helpers
 function dps() {
@@ -49,18 +41,9 @@ alias std="docker stack deploy -c docker-compose.yml "
 alias stu="docker stack update -c docker-compose.yml "
 
 # Docker aliases for connecting to nodes via ssh
-alias godefault='eval $(docker-machine env default)'
-alias golocal='dkr-env-reset'
-alias gosr01old='eval $(docker-machine env srdocker01)'
 alias gosr01='pkill -9 -x -f "ssh -f -N -4 srdocker01.tunnel";ssh -f -N -4 srdocker01.tunnel;export DOCKER_HOST=tcp://localhost:12400; export docker_short=srdocker01'
 alias srd="docker images | grep scriberule"
 alias gosrinfra-nodec="pkill -9 -x -f \"ssh -f -N -4 srinfra-nodec.tunnel\";ssh -f -N -4 srinfra-nodec.tunnel;export DOCKER_HOST=tcp://localhost:12380; export docker_short=srinfra-nodec"
-alias godock02="pkill -9 -x -f \"ssh -f -N -4 dock02-tunnel\";ssh -f -N -4 dock02-tunnel;export DOCKER_HOST=tcp://localhost:12302; export docker_short=dock02"
-alias godock03="pkill -9 -x -f \"ssh -f -N -4 dock03-tunnel\";ssh -f -N -4 dock03-tunnel;export DOCKER_HOST=tcp://localhost:12303; export docker_short=dock03"
-alias godock04="pkill -9 -x -f \"ssh -f -N -4 dock04-tunnel\";ssh -f -N -4 dock04-tunnel;export DOCKER_HOST=tcp://localhost:12304; export docker_short=dock04"
-alias goalendeavor="pkill -9 -x -f \"ssh -f -N -4 alendeavor-tunnel\";ssh -f -N -4 alendeavor-tunnel;export DOCKER_HOST=tcp://localhost:12305; export docker_short=alendeavor"
-alias goalbuild01="pkill -9 -x -f \"ssh -f -N -4 albuild01-tunnel\";ssh -f -N -4 albuild01-tunnel;export DOCKER_HOST=tcp://localhost:12306; export docker_short=albuild01"
-alias gotemplate="pkill -9 -x -f \"ssh -f -N -4 template-tunnel\";ssh -f -N -4 template-tunnel;export DOCKER_HOST=tcp://localhost:12399; export docker_short=template"
 
 
 dkr-env-reset() { 
@@ -117,6 +100,23 @@ sm() {
 alias bm="bookmark"
 alias dm="deletemark"
 alias j="jump"
+
+function cmd_path () {
+    whence -cp "$!" 2> /dev/null
+}
+
+if [[ -n  cmd_path('exa') ]] ; then
+    alias la="exa -a"
+    alias ll="exa -l"
+    alias lal="exa -la"
+    alias lt="exa -l --tree"
+    alias lat="exa -la --tree"
+else
+    alias la="ls -a"
+    alias ll="ls -l"
+    alias lal="ll -a"
+    alias lat="tree"
+fi
 
 # pbcopy/paste
 alias pbcopy="xclip -selection clipboard"
