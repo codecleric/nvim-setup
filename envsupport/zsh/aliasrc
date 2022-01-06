@@ -101,6 +101,13 @@ alias bm="bookmark"
 alias dm="deletemark"
 alias j="jump"
 
+function cmd_here () {
+    if [[ "$1+1" ]]; then
+        (( $+commands[$1] )) && echo "$1 exists" || echo "$1 does not exist"
+    else
+        echo "Usage: cmd_here command. For example: cmd_here ls"
+    fi
+}
 function cmd_path () {
     whence -cp "$!" 2> /dev/null
 }
