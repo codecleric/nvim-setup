@@ -4,6 +4,8 @@ set nopaste
 iab hdr# <C-home># -*- coding: utf-8 -*- vim: set ts=2 sw=2 expandtab:
 iab hhdr# <C-home><!-- -*- coding: utf-8 -*- vim: set ts=2 sw=2 expandtab: -->
 iab jshdr# <C-home>// -*- coding: utf-8 -*- vim: set ts=2 sw=2 expandtab:
+iab pyhdr# <C-home># -*- coding: utf-8 -*- vim: set ts=4 sw=4 expandtab:
+iab mkhdr# <C-home># -*- coding: utf-8 -*- vim: set ts=4 sw=4 :
 iab ln# #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 iab bk# #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<cr>#~ Title <cr>#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 iab prop# #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<cr>#~ Properties <cr>#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -19,6 +19,8 @@ case "$sys" in
         ;;
 esac
 
+# JSY
+alias jsy-node="node --loader @jsy-lang/nodejs"
 
 # Docker aliases for command line helpers
 function dps() {
