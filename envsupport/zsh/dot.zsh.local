@@ -1,0 +1,65 @@
+# add local shell changes here
+
+eval "$(direnv hook zsh)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+#
+# Make my local laptop keyboard have the Super Key next to the SpaceBar - swap alt_win in this case
+# Find out what the internal keyboard ID is with: xinput
+#setxkbmap -option altwin:swap_alt_win -device 11
+#setxkbmap -option "" -device 11 (to reset a keyboard back to normal)
+
+# This one goes first since it is built in and always needs to be fixed
+KBD_ID=$(xinput | grep 'AT Translated' | awk '{print $7}' | awk -F= '{print $2}')
+if (( ${KBD_ID} )); then
+    echo "Setting alt-win swap for Integrated 'AT Translated' keyboard"
+    setxkbmap -option "altwin:swap_alt_win" -device ${KBD_ID}
+fi
+
+KBD_ID=$(xinput | grep Unicomp | grep -v SUNIX | awk '{print $7}' | awk -F= '{print $2}')
+if (( ${KBD_ID} )); then
+    echo "Setting alt-win swap for Unicomp (not Sun version) keyboard"
+    setxkbmap -option "altwin:swap_alt_win" -device ${KBD_ID}
+fi
+
+KBD_ID=$(xinput | grep 'Chicony  PFU-65 USB' | awk '{print $6}' | awk -F= '{print $2}')
+if (( ${KBD_ID} )); then
+    echo "Clearing Settings for 'Chicony PFU 65' keyboard"
+    setxkbmap -option "" -device ${KBD_ID} 
+fi
+
+
+KBD_ID=$(xinput | grep Unicomp | grep SUNIX | awk '{print $5}' | awk -F= '{print $2}')
+if (( ${KBD_ID} )); then
+    echo "Turning off all optons for Unicomp Sun version keyboard"
+    setxkbmap -option "" -device ${KBD_ID}
+    echo "...Turning off caps lock Unicomp Sun version keyboard"
+    setxkbmap -option ctrl:nocaps -device ${KBD_ID}
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+if [ -d "$HOME/Apps" ] ; then
+    PATH="$HOME/Apps:$HOME/Apps/Pharo10:$PATH"
+fi
+if [ -d "$HOME/Apps/dockerized/bin" ] ; then
+    PATH="$HOME/Apps/dockerized/bin:$PATH"
+fi
+
+if [ -n "$PYTHONPATH" ]; then
+    export PYTHONPATH='/home/brian/.local/share/pdm/venv/lib/python3.9/site-packages/pdm/pep582':$PYTHONPATH
+else
+    export PYTHONPATH='/home/brian/.local/share/pdm/venv/lib/python3.9/site-packages/pdm/pep582'
+fi
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# aliases for wireguard
+alias algoup="sudo systemctl start wg-quick@wg0"
+alias algodown="sudo systemctl stop wg-quick@wg0"
+
+alias keys='source ~/.zsh.local'

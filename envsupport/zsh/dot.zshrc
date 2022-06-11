@@ -137,3 +137,5 @@ export TERM=xterm-256color
 [ -f /usr/bin/direnv ] && eval "$(direnv hook zsh)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"

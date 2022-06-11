@@ -1,0 +1,9 @@
+# XONSH WIZARD START
+$ALIAS_COMPLETIONS_OPTIONS_BY_DEFAULT = '1'
+$AUTOENV_COMMON_HOOKS = '""'
+$AUTO_CD = '1'
+$COMPLETION_IN_THREAD = '1'
+$XONSH_HISTORY_MATCH_ANYWHERE = '1'
+source-zsh --login True "echo loading xonsh foreign shell"
+xontrib load abbrevs apt_tabcomplete argcomplete autojump autovox autoxsh avox_poetry base16_shell commands coreutils direnv docker_tabcomplete fzf-widgets gitinfo homebrew macro_lib onepath pyenv readable-traceback schedule sh vox vox_tabcomplete
+# XONSH WIZARD END

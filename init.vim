@@ -58,6 +58,8 @@ endif
   Plug 'kchmck/vim-coffee-script'
   Plug 'ekalinin/Dockerfile.vim'
   Plug 'neo4j-contrib/cypher-vim-syntax'
+  Plug 'isobit/vim-caddyfile'
+  Plug 'earthly/earthly.vim'
   "Plug 'nicr9/vim-orca'
   "
   "Vim only
@@ -84,7 +86,6 @@ endif
 "
   Plug 'gabrielelana/vim-markdown'
 
-  Plug 'ternjs/tern_for_vim'
 
   " Themes
   Plug 'nanotech/jellybeans.vim'
@@ -93,7 +94,7 @@ endif
   "Plug 'nathangrigg/vim-beancount'
     
 call plug#end()            " required
-let g:tern#command = systemlist('nvm which current')
+
 filetype plugin indent on    " required
 set encoding=UTF-8
 
@@ -106,6 +107,22 @@ endif
 set nobackup
 
 set expandtab shiftwidth=2 tabstop=2
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'filename': 'LightlineTruncatedFilename'
+      \ },
+      \ }
+
+function! LightlineTruncatedFilename()
+    return pathshorten(expand('%:p'), 3)
+endfunction
 
 "set modelines=0
 set cursorline

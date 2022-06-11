@@ -1,0 +1,26 @@
+# XONSH WIZARD START
+$ALIAS_COMPLETIONS_OPTIONS_BY_DEFAULT = '1'
+$AUTOENV_COMMON_HOOKS = '""'
+$AUTO_CD = '1'
+$COMPLETION_IN_THREAD = '0'
+$XONSH_HISTORY_MATCH_ANYWHERE = '1'
+$VI_MODE=True
+#source-zsh --login True "echo loading xonsh foreign shell"
+#xontrib load abbrevs apt_tabcomplete argcomplete autojump autovox autoxsh avox_poetry base16_shell commands coreutils direnv docker_tabcomplete fzf-widgets gitinfo homebrew macro_lib onepath pyenv readable-traceback schedule sh vox vox_tabcomplete
+# XONSH WIZARD END
+def jump(args):
+    import os
+    if len(args) < 1:
+        return
+    with open(os.path.expanduser("~/.bookmarks"), "r") as bm:
+        for line in bm.readlines():
+            fldr, key = line.split('|')
+            if key.strip() == args[0]:
+                folder = os.path.expanduser(fldr.replace('$HOME', '~'))
+                print($(echo @("going to {}".format(folder))))
+                os.chdir(folder)
+                return
+
+aliases['j'] = jump
+sleep 20
+

@@ -11,10 +11,16 @@ if test "$ID" = 'ubuntu'; then
     sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags
 elif test "$ID" = 'centos'; then
     sudo yum install -y zsh git tmux at pipx curl ctags
+elif test "$ID" = 'nixos'; then
+    nix-env -iA nixos.fortune nixos.at nixos.sox nixos.python310Packages.pipx nixos.curl nixos.universal-ctags
 fi
 
 # Fetch oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if test "$ID" = 'nixos'; then
+    cp -v $(nix-env -q --out-path oh-my-zsh | cut -d' ' -f3)/share/oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+else
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 # Fetch zgen for zsh package management
 git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen

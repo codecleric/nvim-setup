@@ -1,0 +1,179 @@
+# Yup, you can set different shells
+SHELL=/bin/bash
+SAMPLE_ENV_VAR_WITH_DEFAULT ?= a-default-value
+proj := "sample-proj"
+MONKEY_VAR ?= monkey lips
+
+readme: ensure-cowsay ## Show the project README.md file
+	@if [ -f ./README.md ] ; then
+		@cat README.md
+	@else
+		@cowsay "Um, you don't have a README.md file"
+		@while true; do
+			@read -p "Would you like to make one? [Y/N]: " answer
+			@case $$answer in
+				[Yy]* )
+					@read -p "Enter the title: " the_title
+					@echo "# $$the_title" >> README.md
+					@echo "" >> README.md
+					@read -p "Enter a short description: " the_desc
+					@echo "$$the_desc" >> README.md
+					@echo "" >> README.md
+					@echo "## Usage Section" >> README.md
+					@echo "... all done!"
+					break
+					;;
+				[Nn]* )
+					@clear
+					@cowsay -f ./.brian.cow "WHY DON'T YOU WANT A README????"
+					@break
+					;;
+				* ) 
+					@echo "Please answer Y or N." 
+					;;
+			@esac
+		@done
+	@fi
+
+.PHONY: a_prereq
+a_prereq: ## A generic prereq
+	@echo "I'm a message from a prereq"
+	@echo "========================================"
+
+.PHONY: another_prereq
+another_prereq: ## Another generic prereq
+	@echo "I'm a message from another prereq"
+	@echo "========================================"
+
+# = for assignment is a recursive assignment and is eval'd every time
+foo = $(bar)
+bar = $(ugh)
+ugh = Huh?
+recurse_vars:;@echo $(foo) ## Show recursive var expansion (=)
+
+# := or ::= are simple assignment and are only eval'd once
+x := foo
+y := $(x) bar
+x := later
+simple_vars:;@echo "x is $(x), y is $(y)" ## Show simple var expansion (:= or ::=)
+
+define several_lines
+This is line one of the var
+This is line two
+
+Here is four
+endef
+
+monkey_face = yup
+
+jsyfiles := index.jsy compa.jsy compb.jsy compc.jsy
+jsfiles := $(jsyfiles:.jsy=.js)
+
+bar := $(foo:.o=.c)
+show_types_of_vars: monkey_face=${MONKEY_VAR}
+show_types_of_vars: a_prereq another_prereq ## Show examples of different variable type usage
+	@echo "Here is an env var SAMPLE_ENV_VAR_WITH_DEFAULT: ${SAMPLE_ENV_VAR_WITH_DEFAULT}"
+	@echo "--"
+	monkey_shine="This is a big dang monkey"
+	@echo "Here is target local var monkey_shine (double dollar): $$monkey_shine"
+	@echo "--"
+	@echo "Here is global Makefile var monkey_face (dollar paren): $(monkey_face)"
+	@echo "Here is global Makefile var monkey_face (dollar brace): ${monkey_face}"
+	@echo "Here is global Makefile var several_lines (dollar brace): ${several_lines}"
+	@echo "--"
+	@echo "Now for some automatic variables (https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables)"
+	@echo "(Note that you can ref vars just with dollar and var name, but if you have f and foo, it might think you have \$f followed by 'oo'"
+	@echo "$< is the 1st prereq of $@"
+	@echo "[$^] are all the prereqs of $@"
+	@echo "--"
+	@echo "Now for some substitution tricks (https://www.gnu.org/software/make/manual/html_node/Substitution-Refs.html#index-variables_002c-modified-reference)"
+	@echo "| here is the original value of var 'jsyfiles'"
+	@echo "| jsyfiles: $(jsyfiles)"
+	@echo "| "
+	@echo "| here is after using the substition assigned to var jsfiles"
+	@echo "| jsfiles: $(jsfiles)"
+
+
+
+sample_loop: ## Sample of looping in make target
+	@echo "[====] printing out the servers "
+	@echo "[====] (note the use of double dollar signs when using vars in make targets)"
+	declare -a servers=("s1" "s2" "s3" "c1" "c2" "c3" "c4" "c5")
+	arrayLength=$${#servers[@]}
+	@for idx in {0..7}
+	@do
+		@echo "[== $${servers[$$idx]} ==] ... just counting server $$idx"
+	@done
+
+sample_loop_two: ## Another Sample of looping in make target
+	@echo "[====] printing out the servers "
+	@echo "[====] (note the use of double dollar signs when using vars in make targets)"
+	declare -a servers=("s1" "s2" "s3" "c1" "c2" "c3" "c4" "c5")
+	@for s in $${servers[@]}
+	@do
+		@echo "[== $${s} ==] ... just listing servers"
+	@done
+
+# Following are some JSY specific targets
+init_jsy_node_project: ## Kickstart your JSY project allowing node packages 
+	@npm init jsy node . -y
+	@bash ./finish-init.sh
+	@rm ./finish-init.sh
+
+init_jsy_basic_project: ## Kickstart your JSY project for ES6 imports
+	@npm init jsy basic . -y
+	@bash ./finish-init.sh
+	@rm ./finish-init.sh
+	@echo "If you also wish to use node modules, uncomment the dependencies comments in rollup.config.js"
+
+init_jsy_from_github: ## Kickstart your JSY project for UI dev with picnic
+	@npm init from-gh qabex/web-jsy/picnic .
+	@bash ./finish-init.sh
+	@rm ./finish-init.sh
+
+node_modules: package.json
+	@npm install 
+
+rollup := node_modules/.bin/rollup
+
+watch: node_modules ## Run rollup to rebuild on changes
+	@$(rollup) --config --watch
+
+qsrv := node_modules/.bin/qsrv
+
+serve: node_modules ## Serve the app
+	@$(qsrv) --root ./root -f ./root/index.html -- ./root ./root/esm
+
+# Following are utility functions we use in the Makefile
+ensure_cowsay: # install the cowsay tool (single hash keeps me out of the menu)
+	@if ! command -v cowsay &> /dev/null
+	@then
+		@echo "[====] ... now installing cowsay - requesting SUDO password"
+		@sudo apt-get install -y fortune cowsay
+	@fi
+
+archive_repo: root/% ## Make a tar/gzip archive of the repo with the date
+	mydir=`pwd`
+	@cd ..
+	@tar cvzf $(proj)-`date +%Y-%m-%dT%H%M`.tgz $$mydir
+
+
+.ONESHELL: sample_loop ensure_cowsay show_types_of_vars
+.ONESHELL: archive_repo 
+.ONESHELL: help readme
+
+.PHONY: help sample-loop ensure-cowsay show-types-of-vars init-jsy-node-project
+.PHONY: init-jsy-basic-project init-jsy-from-github
+
+help: ensure-cowsay
+	@if [ -f ./README.md ] ; then
+		@grep "^\#" -m 2 -n README.md | awk 'NR>1 {split($$0,a,":"); print a[1] | "read c; c=$$((c-1)); head -n $$c README.md" }'
+		@echo "========================================================================"
+	@else
+		@cowsay "Add a README.md for a better description"
+	@fi
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+
+.DEFAULT_GOAL := help
+

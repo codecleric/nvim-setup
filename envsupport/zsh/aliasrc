@@ -5,7 +5,7 @@ alias rmrej="find . -name '*.rej' -delete"
 alias rmpyc="find . -name '*.py[co]' -delete"
 alias rmgrep="find . -name '*.grep' -delete"
 alias rmtodo="find . -name '*.todo' -delete"
-
+alias makehere="cp ${HOME}/.config/nvim/envsupport/zsh/makefile.template ./Makefile"
 alias fd=fdfind
 
 sys="`uname`"
