@@ -1,5 +1,5 @@
+SHELL:=/usr/bin/bash
 # Yup, you can set different shells
-SHELL=/run/current-system/sw/bin/bash
 NVIM_PATH=${HOME}/.config/nvim
 VIM_PATH=${HOME}/.config/nvim
 ENVSUPPORT_PATH=${HOME}/.config/nvim/envsupport
@@ -43,13 +43,16 @@ full-monte: ensure_packages ensure_zsh_setup ensure_vimplug install_rc_files ins
 
 .SILENT: ensure_packages
 ensure_packages: ## Install the utilities I like to have around
-	source /etc/os-release
+	. /etc/os-release
 	echo "Installing various packages to support this config... you will be asked to sudo"
-	if test "$(ID_LIKE)" = 'debian'; then
+	if test "$$ID_LIKE" = 'debian'; then
+		echo "[====] ... now installing tools for $$ID_LIKE like system"
 		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags exa
-	elif test "$(ID_LIKE)" = 'centos'; then
+	elif test "$$ID_LIKE" = 'centos'; then
+		echo "[====] ... now installing tools for $$ID_LIKE like system "
 		sudo yum install -y zsh git tmux at pipx curl ctags
-	elif test "$ID" = 'nixos'; then
+	elif test "$$ID" = 'nixos'; then
+		echo "[====] ... now installing tools on $$ID_LIKE "
 	    nix-env -iA nixos.fortune nixos.at nixos.sox nixos.python310Packages.pipx nixos.curl nixos.universal-ctags
 	fi
 
@@ -101,14 +104,18 @@ archive-repo: ## Make a tar/gzip archive of the repo with the date
 
 .SILENT: ensure_cowsay
 ensure_cowsay: # install the cowsay tool (single hash keeps me out of the menu)
+	. /etc/os-release
 	if ! command -v cowsay &> /dev/null
 	then
-		echo "[====] ... now installing cowsay - requesting SUDO password"
-		if test "$(ID_LIKE)" = 'debian'; then
+		echo "[====] ... now installing cowsay $$ID_LIKE "
+		if test "$$ID_LIKE" = 'debian'; then
+			echo "[====] debian like system - requesting SUDO password"
 			sudo apt-get install -y fortune cowsay
-		elif test "$(ID_LIKE)" = 'centos'; then
+		elif test "$$ID_LIKE" = 'centos'; then
+			echo "[====] centos like system - requesting SUDO password"
 			sudo yum install -y fortune cowsay
-		elif test "$ID" = 'nixos'; then
+		elif test "$$ID" = 'nixos'; then
+			echo "[====] nixos"
 			nix-env -iA nixos.cowsay
 		fi
 	fi
