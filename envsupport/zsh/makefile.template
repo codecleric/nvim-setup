@@ -4,7 +4,9 @@ SAMPLE_ENV_VAR_WITH_DEFAULT ?= a-default-value
 proj := "sample-proj"
 MONKEY_VAR ?= monkey lips
 
-readme: ensure-cowsay ## Show the project README.md file
+.ONESHELL:
+
+readme: ensure_cowsay ## Show the project README.md file
 	@if [ -f ./README.md ] ; then
 		@cat README.md
 	@else
@@ -70,49 +72,50 @@ jsyfiles := index.jsy compa.jsy compb.jsy compc.jsy
 jsfiles := $(jsyfiles:.jsy=.js)
 
 bar := $(foo:.o=.c)
+.SILENT: show_types_of_vars
 show_types_of_vars: monkey_face=${MONKEY_VAR}
 show_types_of_vars: a_prereq another_prereq ## Show examples of different variable type usage
-	@echo "Here is an env var SAMPLE_ENV_VAR_WITH_DEFAULT: ${SAMPLE_ENV_VAR_WITH_DEFAULT}"
-	@echo "--"
+	echo "Here is an env var SAMPLE_ENV_VAR_WITH_DEFAULT: ${SAMPLE_ENV_VAR_WITH_DEFAULT}"
+	echo "--"
 	monkey_shine="This is a big dang monkey"
-	@echo "Here is target local var monkey_shine (double dollar): $$monkey_shine"
-	@echo "--"
-	@echo "Here is global Makefile var monkey_face (dollar paren): $(monkey_face)"
-	@echo "Here is global Makefile var monkey_face (dollar brace): ${monkey_face}"
-	@echo "Here is global Makefile var several_lines (dollar brace): ${several_lines}"
-	@echo "--"
-	@echo "Now for some automatic variables (https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables)"
-	@echo "(Note that you can ref vars just with dollar and var name, but if you have f and foo, it might think you have \$f followed by 'oo'"
-	@echo "$< is the 1st prereq of $@"
-	@echo "[$^] are all the prereqs of $@"
-	@echo "--"
-	@echo "Now for some substitution tricks (https://www.gnu.org/software/make/manual/html_node/Substitution-Refs.html#index-variables_002c-modified-reference)"
-	@echo "| here is the original value of var 'jsyfiles'"
-	@echo "| jsyfiles: $(jsyfiles)"
-	@echo "| "
-	@echo "| here is after using the substition assigned to var jsfiles"
-	@echo "| jsfiles: $(jsfiles)"
+	echo "Here is target local var monkey_shine (double dollar): $$monkey_shine"
+	echo "--"
+	echo "Here is global Makefile var monkey_face (dollar paren): $(monkey_face)"
+	echo "Here is global Makefile var monkey_face (dollar brace): ${monkey_face}"
+	echo "Here is global Makefile var several_lines (dollar brace): ${several_lines}"
+	echo "--"
+	echo "Now for some automatic variables (https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables)"
+	echo "(Note that you can ref vars just with dollar and var name, but if you have f and foo, it might think you have \$f followed by 'oo'"
+	echo "$< is the 1st prereq of $@"
+	echo "[$^] are all the prereqs of $@"
+	echo "--"
+	echo "Now for some substitution tricks (https://www.gnu.org/software/make/manual/html_node/Substitution-Refs.html#index-variables_002c-modified-reference)"
+	echo "| here is the original value of var 'jsyfiles'"
+	echo "| jsyfiles: $(jsyfiles)"
+	echo "| "
+	echo "| here is after using the substition assigned to var jsfiles"
+	echo "| jsfiles: $(jsfiles)"
 
 
-
+.SILENT: sample_loop sample_loop_two
 sample_loop: ## Sample of looping in make target
-	@echo "[====] printing out the servers "
-	@echo "[====] (note the use of double dollar signs when using vars in make targets)"
+	echo "[====] printing out the servers "
+	echo "[====] (note the use of double dollar signs when using vars in make targets)"
 	declare -a servers=("s1" "s2" "s3" "c1" "c2" "c3" "c4" "c5")
 	arrayLength=$${#servers[@]}
-	@for idx in {0..7}
-	@do
-		@echo "[== $${servers[$$idx]} ==] ... just counting server $$idx"
-	@done
+	for idx in {0..7}
+	do
+		echo "[== $${servers[$$idx]} ==] ... just counting server $$idx"
+	done
 
 sample_loop_two: ## Another Sample of looping in make target
-	@echo "[====] printing out the servers "
-	@echo "[====] (note the use of double dollar signs when using vars in make targets)"
+	echo "[====] printing out the servers "
+	echo "[====] (note the use of double dollar signs when using vars in make targets)"
 	declare -a servers=("s1" "s2" "s3" "c1" "c2" "c3" "c4" "c5")
-	@for s in $${servers[@]}
-	@do
-		@echo "[== $${s} ==] ... just listing servers"
-	@done
+	for s in $${servers[@]}
+	do
+		echo "[== $${s} ==] ... just listing servers"
+	done
 
 # Following are some JSY specific targets
 init_jsy_node_project: ## Kickstart your JSY project allowing node packages 
@@ -158,14 +161,11 @@ archive_repo: root/% ## Make a tar/gzip archive of the repo with the date
 	@tar cvzf $(proj)-`date +%Y-%m-%dT%H%M`.tgz $$mydir
 
 
-.ONESHELL: sample_loop ensure_cowsay show_types_of_vars
-.ONESHELL: archive_repo 
-.ONESHELL: help readme
 
-.PHONY: help sample-loop ensure-cowsay show-types-of-vars init-jsy-node-project
+.PHONY: help sample-loop ensure_cowsay show-types-of-vars init-jsy-node-project
 .PHONY: init-jsy-basic-project init-jsy-from-github
 
-help: ensure-cowsay
+help: ensure_cowsay
 	@if [ -f ./README.md ] ; then
 		@grep "^\#" -m 2 -n README.md | awk 'NR>1 {split($$0,a,":"); print a[1] | "read c; c=$$((c-1)); head -n $$c README.md" }'
 		@echo "========================================================================"

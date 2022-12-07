@@ -136,6 +136,5 @@ export TERM=xterm-256color
 [ -f /usr/bin/kubectl ] && source <(kubectl completion zsh)
 [ -f /usr/bin/direnv ] && eval "$(direnv hook zsh)"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-export PATH="$HOME/.poetry/bin:$PATH"
+export TMPDIR=/tmp
+if [ -e /home/brian/.nix-profile/etc/profile.d/nix.sh ]; then . /home/brian/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

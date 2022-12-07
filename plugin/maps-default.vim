@@ -11,7 +11,7 @@ noremap <Leader>lc :cd %:h<cr>
 " <Leader>g = Fugitive plugin for Git
 noremap <Leader>gw :Gwrite<CR>
 noremap <Leader>gc :Git commit<CR>
-noremap <Leader>gp :Git push origin master<CR>
+noremap <Leader>gp :Git push<CR>
 noremap <Leader>gs :Git status<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gf :Gpull<CR>
@@ -24,6 +24,9 @@ noremap <C-P> :cp<cr>
 " Toggle the TagList buffer
 nnoremap <Leader>vt :TagbarToggle<CR>
 nnoremap <Leader>vc :TagbarOpenAutoClose<CR>
+nnoremap <Leader>vd :TagbarDebug tagbar.log<CR>
+nnoremap <Leader>vo :TagbarDebugEnd<CR>
+nnoremap <Leader>vf :TagbarForceUpdate<CR>
 
 " NVIM built in terminal
 if has("nvim")

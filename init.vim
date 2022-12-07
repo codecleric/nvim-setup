@@ -14,10 +14,13 @@ endif
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-db'
   Plug 'tpope/vim-jdaddy'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-dadbod'
+  Plug 'LnL7/vim-nix'
+
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'ryanoasis/vim-devicons'
   Plug 'ap/vim-css-color'
@@ -31,7 +34,7 @@ endif
   Plug 'ervandew/supertab'
 
   " Need to have exuberant ctags installed for tagbar
-  Plug 'majutsushi/tagbar'
+  Plug 'preservim/tagbar'
 
   " UtiliSnips; https://github.com/SirVer/ultisnips
   "   also see https://github.com/panozzaj/conf/blob/master/common/.vim/UltiSnips/javascript.snippets
@@ -95,6 +98,8 @@ endif
     
 call plug#end()            " required
 
+" fugitive stuff
+
 filetype plugin indent on    " required
 set encoding=UTF-8
 
@@ -138,6 +143,8 @@ endif
 
 set wildmenu
 set wildmode=full
+
+let $TMPDIR=$HOME . '/tmp'
 
 " learn vimscript the hard way stuff
 "

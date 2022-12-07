@@ -47,7 +47,7 @@ ensure_packages: ## Install the utilities I like to have around
 	echo "Installing various packages to support this config... you will be asked to sudo"
 	if test "$$ID_LIKE" = 'debian'; then
 		echo "[====] ... now installing tools for $$ID_LIKE like system"
-		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags exa
+		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags exa vim-gtk3
 	elif test "$$ID_LIKE" = 'centos'; then
 		echo "[====] ... now installing tools for $$ID_LIKE like system "
 		sudo yum install -y zsh git tmux at pipx curl ctags

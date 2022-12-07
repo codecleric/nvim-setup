@@ -7,6 +7,7 @@
     ; subdirectories, otherwise two will show up and it will probably
     ; pick the wrong one :)
 	name = Brian Brown
+	email = brian@encipher.com
 [help]
 	autocorrect = 8
 

@@ -41,9 +41,9 @@ command! -nargs=* Unwrap set nowrap linebreak nolist
 set showbreak=…
 
 " Tabstops -- all 4
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=5
+set shiftwidth=5
+set softtabstop=5
 set expandtab           " expand those nasty tabs to spaces
 set shiftround          " shifting uses nearest multiple of shiftwidth
 
@@ -96,6 +96,8 @@ endfunction
 " Coffee script
 autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufReadPost *.jsy setl shiftwidth=2 tabstop=2 expandtab
+autocmd BufNewFile,BufReadPost *.py setl shiftwidth=4 tabstop=4 expandtab
 
 set backupdir=~/.vim/backup//
 set directory=~/.vim/backup//
