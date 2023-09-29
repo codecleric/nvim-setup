@@ -5,11 +5,23 @@ set nocompatible              " be iMproved, required
 "  > https://github.com/junegunn/vim-plug
 
 filetype off                  " required
-if has('win32')
-    call plug#begin('~/vimfiles/plugged')
-else
-    call plug#begin('~/.config/nvim/plugged')
+"
+" setup OS detection for later use
+"
+if !exists("g:os") || !exists("g:pluggedloc") || !exists("g:vimconfig")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+        let g:pluggedloc = '~/vimfiles/plugged'
+        let g:vimconfig = '~/vimfiles'
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+        let g:pluggedloc = '~/.config/nvim/plugged'
+        let g:vimconfig = '~/.config/nvim'
+    endif
 endif
+
+call plug#begin(g:pluggedloc)
+
   " General environment improvement
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
@@ -48,7 +60,7 @@ endif
   " Navigation
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
-  if !has('win32')
+  if g:os == "Linux" || g:os == "Darwin"
     Plug 'xuyuanp/nerdtree-git-plugin'
   endif
   Plug 'vim-scripts/genutils'
@@ -68,7 +80,7 @@ endif
   "Vim only
   "Plugin 'Shougo/vimproc.vim'
   "Plugin 'Shougo/vimshell.vim'
-  if !has('win32')
+  if g:os == "Windows"
     Plug 'codecleric/simpleterm.vim'
   endif
   "Plug 'elzr/vim-json'
@@ -89,6 +101,7 @@ endif
 "
   Plug 'gabrielelana/vim-markdown'
 
+  Plug 'farfanoide/vim-kivy'
 
   " Themes
   Plug 'nanotech/jellybeans.vim'
@@ -103,7 +116,7 @@ call plug#end()            " required
 filetype plugin indent on    " required
 set encoding=UTF-8
 
-if has('win32')
+if g:os == "Windows"
     set swapfile
     set dir=~/.swap-files
 else
@@ -145,6 +158,14 @@ set wildmenu
 set wildmode=full
 
 let $TMPDIR=$HOME . '/tmp'
+"
+" Set up guifonts
+"
+let fontfile = expand(g:vimconfig) . '/fontsetup.vim'
+echom fontfile
+exec "source " . fontfile
+
+
 
 " learn vimscript the hard way stuff
 "

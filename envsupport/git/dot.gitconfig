@@ -24,4 +24,4 @@
 [http]
 	sslverify = false
 [init]
-	defaultBranch = master
+	defaultBranch = main

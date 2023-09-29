@@ -6,6 +6,7 @@ alias rmpyc="find . -name '*.py[co]' -delete"
 alias rmgrep="find . -name '*.grep' -delete"
 alias rmtodo="find . -name '*.todo' -delete"
 alias makehere="cp ${HOME}/.config/nvim/envsupport/zsh/makefile.template ./Makefile"
+alias makeheredc="cp ${HOME}/.config/nvim/envsupport/zsh/makefile.template.docker-compose ./Makefile"
 alias fd=fdfind
 
 sys="`uname`"
@@ -37,7 +38,7 @@ function dsl() {
 }
 
 alias dg="docker images | grep "
-alias comp="docker-compose"
+alias comp="docker compose"
 alias stack="docker stack"
 alias std="docker stack deploy -c docker-compose.yml "
 alias stu="docker stack update -c docker-compose.yml "
@@ -115,11 +116,12 @@ function cmd_path () {
 }
 
 if [[ -n  cmd_path('exa') ]] ; then
-    alias la="exa -a"
-    alias ll="exa -l"
-    alias lal="exa -la"
-    alias lt="exa -l --tree"
-    alias lat="exa -la --tree"
+    alias ls="exa -F"
+    alias la="ls -a"
+    alias ll="ls -l"
+    alias lal="ls -la"
+    alias lt="ls -l --tree"
+    alias lat="ls -la --tree"
 else
     alias la="ls -a"
     alias ll="ls -l"

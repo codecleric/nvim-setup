@@ -96,6 +96,28 @@ show_types_of_vars: a_prereq another_prereq ## Show examples of different variab
 	echo "| here is after using the substition assigned to var jsfiles"
 	echo "| jsfiles: $(jsfiles)"
 
+DS := \$
+BL := {
+BR := }
+.SILENT: bash_var_games
+bash_var_games: ## Using var substitution with bash in a Makefile
+	echo "Bash supports manipulating the values in a var with characters following the var name"
+	echo "   ,, will lowercase the whole var"
+	echo "   ^^ will uppercase the whole var"
+	echo "    , will lowercase the first letter"
+	echo "    ^ will uppercase the first letter"
+	echo "This normally looks like $(DS)$(BL)SOME_VAR,,$(BR)"
+	echo ""
+	echo "MONKEY_VAR PARENS: $(MONKEY_VAR) (value correct)"
+	echo "MONKEY_VAR BRACKETS: ${MONKEY_VAR} (value correct)"
+	echo "MONKEY_VAR uppercase without the double dollar: ${MONKEY_VAR^^} (value empty)"
+	echo "However, in a makefile, you need to use two dollar signs to make it work, one won't cut it"
+	echo "Additionally, with echo, you have to assign the env var to a local var and use modifier on that"
+	echo "in sed, you can use the original var name"
+	avar="$(MONKEY_VAR)"
+	echo "MONKEY_VAR uppercase with the double dollar: $${MONKEY_VAR^^} (value empty)"
+	echo "MONKEY_VAR uppercase with the double dollar: $${avar^^} (value correct)"
+	echo ""
 
 .SILENT: sample_loop sample_loop_two
 sample_loop: ## Sample of looping in make target

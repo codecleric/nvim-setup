@@ -8,8 +8,8 @@ fif() {
     else
         local theExt=$1
         shift
-        echo "find . -name \"*${ext}\" -type f -exec grep -nH --color=auto \"$@\" {} \;"
-        find . -name "*${ext}" -type f -exec grep -nH --color=auto "$@" {} \;
+        echo "find . -name \"*${theExt}\" -type f -exec grep -nH --color=auto \"$@\" {} \;"
+        find . -name "*${theExt}" -type f -exec grep -nH --color=auto "$@" {} \;
     
     fi
 }

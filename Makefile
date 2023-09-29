@@ -97,6 +97,15 @@ install_hack_font: ## Install the Nerd Hack font
 	fc-cache -f -v
 	fc-list | grep "Hack"
 
+.SILENT: install_nerd_fonts
+install_nerd_fonts: ## Install the Nerd Fonts repo
+	echo "Downloading repo"
+	cd /tmp
+	git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+	cd nerd-fonts
+	chmod +x ./install.sh
+	./install.sh 
+
 archive-repo: ## Make a tar/gzip archive of the repo with the date
 	mydir=`pwd`
 	@cd ..

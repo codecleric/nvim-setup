@@ -1,0 +1,49 @@
+SHELL=/usr/bin/bash
+SERVICE=fixme
+home_folder = $(shell realpath ~)
+
+start: ## Run the container
+	docker compose up -d
+	docker compose logs -f
+
+stop: ## Stop the container running the API server
+	docker compose down
+
+shell: ## Exec into the running container
+	docker compose exec ${SERVICE} ash
+
+restart: stop start ## restart the container
+
+update: pull restart ## Update the container and restart
+
+pull: ## Pull the latest image
+	docker compose pull
+
+archive_repo: ## Make a tar/gzip archive of the repo with the date
+	$(eval THISDIR := $(shell basename $$PWD))
+	echo "Archiving $(THISDIR)"
+	rm -f $(THISDIR)-latest.tar.gz
+	cd ..
+	tar cvzf $(THISDIR)_`date +%Y-%m-%dT%H%M`.tgz $(THISDIR)
+
+ensure_figlet: # install the cowsay tool (single hash keeps me out of the menu)
+	if ! command -v figlet &> /dev/null
+	then
+		echo "[====] ... now installing figlet - requesting SUDO password"
+		sudo apt-get install -y figlet
+	fi
+
+
+
+.ONESHELL:
+.SILENT: archive_repo start stop shell pull help ensure_figlet
+
+.PHONY: help
+
+help: ensure_figlet
+	figlet "${SERVICE} actions"
+	echo "-----------------------------------------------"
+	grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+
+.DEFAULT_GOAL := help

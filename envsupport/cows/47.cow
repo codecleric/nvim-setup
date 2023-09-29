@@ -1,0 +1,80 @@
+# Agent 47 (HITMAN)
+# by @comicsworldgame - https://twitter.com/comicsworldgame/status/526127341580595201
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;223m  ";
+$b = "\e[48;5;94m  ";
+$c = "\e[48;5;180m  ";
+$d = "\e[48;5;253m  ";
+$e = "\e[48;5;234m  ";
+$f = "\e[48;5;236m  ";
+$g = "\e[48;5;242m  ";
+$h = "\e[48;5;231m  ";
+$i = "\e[48;5;196m  ";
+$j = "\e[48;5;251m  ";
+$k = "\e[48;5;203m  ";
+$l = "\e[48;5;238m  ";
+$m = "\e[48;5;217m  ";
+$n = "\e[48;5;240m  ";
+$o = "\e[48;5;88m  ";
+$p = "\e[48;5;102m  ";
+$q = "\e[48;5;52m  ";
+$r = "\e[48;5;247m  ";
+
+$the_cow = <<EOC
+          $t
+            $t                $a        $x
+              $t            $a            $x
+                $t        $a              $x
+                  $t      $a                $x
+                          $a                $x
+                          $a                $x
+                          $a                  $x
+                          $a          $b$a$c$a$x
+                          $a$b  $a$b    $a$c  $x
+                            $c$b$a$b  $a$c  $x
+                            $c  $a  $c      $x
+                            $a$c$a$c        $x
+                              $a$c          $d  $e$x
+                              $a      $c  $d  $f$g$e$x
+                              $d$c      $d  $f$g  $e$g$x
+                            $e$h$i$d  $j$d$f$g    $e$g    $x
+                          $e$h$k$i$d$j$h$f$g$f$e    $g    $e  $g  $x
+                      $f  $e$h$k$h$j$h$f$g    $l$e$g    $e  $g      $x
+                    $f  $e$h  $i$h    $f$g      $e$g$l$e  $g  $l  $g  $x
+                  $e  $f$e$h$m$h    $f$g      $e$g$l  $e$g$f$l      $g$x
+                $e  $f$e$h$k$m$h    $f$l$g  $e    $l  $e$g  $e$l      $x
+                $e$f  $e$h$k$h    $d$f$l  $e$f  $e  $l$e$f$l$g$e  $l$e$x
+                $e$f  $h$k$m$h    $l$f$l  $e$f    $e    $f  $e$g  $e  $x
+                $e$f$e$h$i$m$h    $f$l  $e$f  $l$f  $e  $f$e$g$e  $g$n$x
+                $e$f$e$k$i$j$h$j$h$f$l  $e$f$l    $f$e  $f  $e$g  $e  $x
+                $f$e$h$i$k$j  $h$d$f$l$e  $f$l    $e    $f    $e  $g  $l$x
+                $f$e$i  $k$j    $d$f$l$e$f    $l$e      $f        $l    $x
+                $f$e$i  $k$h    $d$f$e$f      $e        $f          $l  $x
+                $e  $i  $j  $d    $l$f$e$f  $e            $l      $f    $x
+                $e  $i  $j  $h  $d$l$f$e                  $l        $f$l$x
+                $e  $i$k$j  $d$h  $l$f$e                  $l$e$g$l      $x
+                $e  $i$k$j$d$h    $l$f      $e            $l$e  $g$l      $x
+                $e  $i$k$j$d  $h  $l$f        $e      $f$x$l$g  $e$g$l    $x
+                $e$o$i$k$j$d$j  $d$l    $e$f$e$f  $e    $x$l      $e$n$l  $x
+                $e$o$i$k$j  $h    $l  $e    $g$e$f  $e  $x  $l  $g  $e    $x
+                $e$i  $k$j  $h$d  $f$e  $l    $g$e$f$e  $x  $l    $g$l    $x
+              $e  $i$k  $j  $d$h    $f      $l  $g$e    $x  $l    $g$e  $l$x
+            $e    $i$k$m$j  $d  $h  $f      $g$l$e$g$e  $x  $l$g  $e$l    $x
+            $e    $i$k$m$j  $d$h    $d$f  $n$g  $l$f$e  $x  $l$e  $p  $l  $x
+          $e$q$e  $i$k$m$j$h    $d  $j$f$g    $e$p  $e  $x  $l$g$p  $g$l  $x
+          $e$q$e  $i$k$m$j      $d    $l$g    $e        $x$l$g$p  $g$l  $x
+          $e$q$e  $i$k$m$j  $d        $l    $g$e$p    $e$x$l$g    $l    $x
+        $e$q  $e  $i$k$m$j$e$l$e$f$h  $e$f$l    $e      $x  $l$g$p$g$l  $x
+        $e$q$o$e  $i$k$m$f$l$e$l$e      $f$l      $e      $x$l$p  $n  $l$x
+        $e$q$o  $e$k$i$e                  $l$e$l    $e    $x$l$p$l$g  $l$x
+      $e  $q$o  $e$f$k$e      $n  $f    $e$l  $e$l  $e    $l$g  $p$g$l  $x
+      $e$q$o    $e$f          $l  $n    $e$l      $g$e    $l$g$p  $l    $x
+      $e$o      $e$f      $e  $l$n  $l$f$e$l      $g$e  $l  $p  $l      $x
+      $e$o      $e$l$f          $l  $n  $l$e$l  $g  $e  $l$g  $l      $x
+      $e$o      $e$l  $f  $e    $f$n$l    $e  $l$g  $e  $g$h    $l    $x
+      $e          $l  $f$e  $f  $l$n      $e    $g$e    $h$e    $h$l$x
+              $e    $l$e    $f    $e            $g$e    $g  $e$l$n$x
+          $r$e$l  $e$l$e    $f$l        $e      $g$e  $g    $l  $r$x
+EOC

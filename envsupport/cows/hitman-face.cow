@@ -1,0 +1,84 @@
+# Agent 47 (HITMAN)
+# by dzstudiozzz - https://www.redbubble.com/people/dzstudiozzz/works/32244496-hitman-agent-47?p=sticker
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;180m  ";
+$b = "\e[48;5;238m  ";
+$c = "\e[48;5;230m  ";
+$d = "\e[48;5;137m  ";
+$e = "\e[48;5;223m  ";
+$f = "\e[48;5;235m  ";
+$g = "\e[48;5;95m  ";
+$h = "\e[48;5;240m  ";
+$i = "\e[48;5;234m  ";
+$j = "\e[48;5;237m  ";
+$k = "\e[48;5;232m  ";
+$l = "\e[48;5;233m  ";
+$m = "\e[48;5;231m  ";
+$n = "\e[48;5;124m  ";
+$o = "\e[48;5;52m  ";
+$p = "\e[48;5;253m  ";
+$q = "\e[48;5;88m  ";
+$r = "\e[48;5;102m  ";
+
+$the_cow = <<EOC
+                    $t                                                  $a        $x
+                      $t                                          $b$a                $c$x
+                        $t                                    $b  $d$a        $e      $c  $x
+                          $t                                $b$d  $a            $e  $c        $x
+                            $t                            $b    $d    $a      $e    $c          $x
+                              $t                        $b  $f  $g$d$a        $e    $c            $x
+                                $t                    $b  $f    $g$d$a        $e    $c              $x
+                                  $t                  $b$f        $g$a        $e    $c              $x
+                                    $t              $h$f  $i  $f$i  $g$a    $e        $c              $x
+                                                    $h$f    $i  $f$g  $a    $e      $c                $x
+                                                  $h$f      $i      $g$a  $e          $c              $x
+                                                  $h$f    $i    $f    $g$e              $c              $x
+                                                $h$f      $i    $f    $g$e              $c              $x
+                                                $h$f    $i        $f  $g$e            $c                $x
+                                                $h$f    $i        $f  $g  $e          $c                $x
+                                                $h$f    $i        $f  $g  $e          $c                $x
+                                                $h$f    $i        $f  $g  $e            $c              $x
+                                                $h$f  $i          $f  $g  $e                      $c    $x
+                                            $i$x$h$f$h$f$i        $f    $g  $e$a      $e    $c        $e$x$e$x
+                                            $h$i$h    $f$i          $f  $g    $a        $e      $c    $e  $a$x
+                                            $j$i$h  $f$h$i          $f    $g    $a          $e    $c$e      $x
+                                            $h$j$h$f  $h$i            $f  $g      $a      $e              $d$x
+                                            $h$i$h  $i$h$i        $f  $i$f$g$a            $e        $a$e$a$e$x
+                                            $i  $j$h$i$h$i      $f            $g$a                    $e$d$e$x
+                                            $h$i$j$h$i$h  $k$i$f            $g    $d$a$d          $a$e  $a$e$x
+                                            $i$h$j$h$i$h$k        $f$g$f$g    $d$g$d  $a    $f$l  $a$e    $x
+                                              $j$h$j$i  $h$k          $g  $k$g$d$g$a    $l    $f  $e      $x
+                                              $i$h  $i    $k                $g$e$l$a$l          $e    $a$e$x
+                                              $i$h  $i    $k                  $e$l          $d$e    $a$e$x
+                                                $h  $i      $k              $d$e$b$f  $l  $d$e          $x
+                                                  $h  $i      $k          $i$e    $b  $e              $x
+                                                  $h    $i        $k$i  $k$i$d$e  $b$d$e            $a$x
+                                                    $h  $i            $k  $i$d$e      $d    $e    $a$d$x
+                                                    $h  $i        $k      $i$d$e        $d  $e  $d    $x
+                                                    $h  $i                  $d$e          $d  $e$d    $x
+                                                    $h$l$h$i        $l    $i$d$e  $g  $e    $d      $x
+                                                    $h$l$h$i      $l  $i  $b$a$e    $g  $e  $d  $a$d$x
+                                                    $h$l  $h$i  $l  $i    $b$a  $g  $a  $g$e$d$a    $x
+                                                    $h  $l  $h$l  $i      $b$g  $d  $a  $g$e$d$a    $x
+                                                    $h  $l  $h$l              $d$a    $d$g$d  $a  $d$x
+                                                  $f$l$h$l  $h$l    $i    $g$b$a  $d        $a  $d$m$x
+                                                  $b$f$l$h$l$h$l              $g        $d  $a  $d$m$x
+                                                $k$b$f$l  $h$l$i      $l      $d    $a  $d  $a$d$a$m  $f$j$x
+                                            $k    $b$f  $l    $i                $b$a    $d$a$d$a$m    $f  $j$x
+                                          $k      $b  $f  $l    $i        $f$b      $a  $d  $a$m      $f    $j  $x
+                                        $k        $b    $f    $l$i      $f$a            $d$m          $f        $j$x
+                                      $k          $b        $f    $i      $f  $a      $d$m            $f          $j$f$x
+                                  $k              $b            $f  $i        $f    $d$m              $f            $j$f    $x
+                                $k                $b              $f  $i        $f$m                  $f            $j$f        $x
+                            $k                    $b                $f  $l      $m                    $f              $j$f            $x
+                        $k                          $b                $l  $i$l$n$l$m                $b$f              $j$f                  $x
+                    $k                              $b              $l    $o$l$n  $l$m              $p$i$f              $j$f                    $x
+              $k                                    $b            $p$l    $o$q$n  $l$m              $p$i$f  $j$f        $j$f                          $x
+          $k                                        $h$b      $p  $l$b$l$o  $q$n$l$f$l$m          $p  $i$f    $j  $l    $j$f                              $x
+      $k                                            $h$r$b  $p  $l$b  $h$l$o$q  $f      $m        $p  $i$f        $j$f                                  $i$b$x
+      $k                                            $r$h  $p    $b  $h  $l$i$q$n$m$p$f    $m    $p  $b$i$f          $j  $f                              $i$f$b$x
+  $k                                                $r$h  $p      $b$h$r$l$n$o  $m  $p$f$b  $m$p    $b$i$f              $j$f                          $i$f    $b$x
+EOC

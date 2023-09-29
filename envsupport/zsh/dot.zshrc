@@ -94,6 +94,9 @@ case "$sys" in
         ;;
 esac
 
+## RIPGREP setup
+export RIPGREP_CONFIG_PATH=$HOME/.config/nvim/envsupport/ripgrep/ripgreprc
+
 ## AUTOENV setup and functions
 export AUTOENV_COMMON_HOOKS=$HOME/.config/nvim/envsupport/zsh/autoenv
 
