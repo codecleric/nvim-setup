@@ -68,8 +68,6 @@ call plug#begin(g:pluggedloc)
 
   " Specific stack support
   Plug 'chrisbra/csv.vim'
-  Plug 'hashivim/vim-hashicorp-tools'
-  Plug 'b4b4r07/vim-hcl'
   Plug 'kchmck/vim-coffee-script'
   Plug 'ekalinin/Dockerfile.vim'
   Plug 'neo4j-contrib/cypher-vim-syntax'
@@ -162,7 +160,6 @@ let $TMPDIR=$HOME . '/tmp'
 " Set up guifonts
 "
 let fontfile = expand(g:vimconfig) . '/fontsetup.vim'
-echom fontfile
 exec "source " . fontfile
 
 

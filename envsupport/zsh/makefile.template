@@ -139,6 +139,13 @@ sample_loop_two: ## Another Sample of looping in make target
 		echo "[== $${s} ==] ... just listing servers"
 	done
 
+sample_loop_three: ## Looping over array created from a command output
+	echo "[====] showing virtual IPs of docker services "
+	docker service ls |  tr -s ' ' | cut -d " " -f 2 | grep -v NAME | while read -r service ; do
+		echo "---> $$service"	
+	done
+
+
 # Following are some JSY specific targets
 init_jsy_node_project: ## Kickstart your JSY project allowing node packages 
 	@npm init jsy node . -y

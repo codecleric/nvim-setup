@@ -1,0 +1,69 @@
+SHELL=/usr/bin/bash
+STACK=fixme
+STACK_FILE=stack.yml
+home_folder = $(shell realpath ~)
+
+start: ## Run the container
+	docker stack deploy -c ${STACK_FILE}
+	docker compose logs -f
+
+stop: ## Stop the container running the API server
+	docker compose down
+
+shell: ## Exec into the container for service
+
+	echo "Service Names:"
+	docker service ls |  tr -s ' ' | cut -d " " -f 2 | grep -v NAME
+	read -p "Please enter the service name: " servicename
+	read -p "Please enter the command (ash, bash, ls, etc) name: " commandname
+	docker exec -it `docker ps -q -f name=$$servicename` $$commandname
+
+logs: ## Show the logs for a given service (no task ids, untruncated, 30m)
+	echo "Service Names:"
+	docker service ls |  tr -s ' ' | cut -d " " -f 2 | grep -v NAME
+	read -p "Please enter the service name: " servicename
+	docker service logs  -t --no-task-ids --no-trunc  --since 30m --details $$servicename
+
+restart: stop start ## restart the container
+
+update: pull restart ## Update the container and restart
+
+pull: ## Pull the latest image
+	docker compose pull
+
+virtual_ips: ## Show all the virutal IPs for service
+	echo "[====] showing virtual IPs of docker services "
+	docker service ls |  tr -s ' ' | cut -d " " -f 2 | grep -v NAME | while read -r service ; do
+		echo "---> [$$service] ---------------------"	
+		docker service inspect $$service | jq .[].Endpoint.VirtualIPs[].Addr
+		echo ""
+	done
+
+archive_repo: ## Make a tar/gzip archive of the repo with the date
+	$(eval THISDIR := $(shell basename $$PWD))
+	echo "Archiving $(THISDIR)"
+	rm -f $(THISDIR)-latest.tar.gz
+	cd ..
+	tar cvzf $(THISDIR)_`date +%Y-%m-%dT%H%M`.tgz $(THISDIR)
+
+ensure_figlet: # install the cowsay tool (single hash keeps me out of the menu)
+	if ! command -v figlet &> /dev/null
+	then
+		echo "[====] ... now installing figlet - requesting SUDO password"
+		sudo apt-get install -y figlet
+	fi
+
+
+
+.ONESHELL:
+.SILENT: archive_repo start stop shell pull help ensure_figlet
+
+.PHONY: help
+
+help: ensure_figlet
+	figlet "Docker Swarm ${SERVICE} actions"
+	echo "-----------------------------------------------"
+	grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+
+.DEFAULT_GOAL := help
