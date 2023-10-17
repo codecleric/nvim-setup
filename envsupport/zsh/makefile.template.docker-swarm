@@ -1,6 +1,11 @@
 SHELL=/usr/bin/bash
 STACK=fixme
 STACK_FILE=stack.yml
+GIT_BRANCH=git-stage-prod
+DKR_REG_HOST=cc-registry
+DKR_REG_DOMAIN=codecleric.com
+DKR_REG_PORT=5555
+DKR_REG=${DKR_REG_HOST}.${DKR_REG_DOMAIN}:${DKR_REG_PORT}
 home_folder = $(shell realpath ~)
 
 start: ## Run the container
@@ -28,8 +33,20 @@ restart: stop start ## restart the container
 
 update: pull restart ## Update the container and restart
 
+.SILENT: pull
 pull: ## Pull the latest image
 	docker compose pull
+
+.SILENT: pull_all
+pull_all: ## Pull all the images from the services in local YAML files
+	echo "Finds images within all YAML stack files in the current folder and pulls them"
+	IMAGE_NAMES=$(grep -ho '${DKR_REG_HOST}.*:${DKR_REG_PORT}/\S*' $PWD/0*.yml)
+	grep -ho '${DKR_REG_HOST}.*:${DKR_REG_PORT}/\S*' ${PWD}/*.yml | while read -r IMG_SRC ; do
+		echo "===>>> docker pulling $$IMG_SRC"
+		docker pull $$IMG_SRC
+		DKR_TARGET=`docker image inspect -f '{{index .RepoDigests 0}}' $$IMG_SRC`
+		echo Repo Digest: $$DKR_TARGET
+	done
 
 virtual_ips: ## Show all the virutal IPs for service
 	echo "[====] showing virtual IPs of docker services "
