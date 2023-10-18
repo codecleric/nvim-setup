@@ -1,0 +1,23 @@
+###############################################################################
+# Launcher dialogs
+###############################################################################
+
+#### Samples from main config - these are actually duplicates
+## Launch // Terminal // <> Enter ##
+##set_from_resource $i3-wm.binding.terminal i3-wm.binding.terminal Return
+##bindsym $mod+$i3-wm.binding.terminal exec --no-startup-id /usr/bin/x-terminal-emulator
+
+## Launch // Browser // <><Shift> Enter ##
+##set_from_resource $i3-wm.binding.browser i3-wm.binding.browser Shift+Return
+##bindsym $mod+$i3-wm.binding.browser exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+
+## Print Screen
+bindsym --release Print exec "scrot -m '/home/brian/Pictures/screenshots/%Y-%m-%dT%H%M_$wx$h.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/brian/Pictures/screenshots/%Y-%m-%dT%H%M_$wx$h.png'"
+bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/brian/Pictures/screenshots/%Y-%m-%dT%H%M_$wx$h.png'"
+
+## greenclip clipboard manager
+set $greenclip /home/brian/.local/bin/greenclip
+bindsym $mod+Shift+v exec rofi -modi "clipboard:$greenclip print" -show clipboard
+exec --no-startup-id $greenclip daemon
+

@@ -47,7 +47,7 @@ ensure_packages: ## Install the utilities I like to have around
 	echo "Installing various packages to support this config... you will be asked to sudo"
 	if test "$$ID_LIKE" = 'debian'; then
 		echo "[====] ... now installing tools for $$ID_LIKE like system"
-		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags exa vim-gtk3 figlet
+		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags exa vim-gtk3 figlet ripgrep
 	elif test "$$ID_LIKE" = 'centos'; then
 		echo "[====] ... now installing tools for $$ID_LIKE like system "
 		sudo yum install -y zsh git tmux at pipx curl ctags
@@ -63,10 +63,56 @@ ensure_zsh_setup: ## Install oh-my-zsh and zgen
 	# Fetch zgen for zsh package management
 	git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
 
+.SILENT: ensure_flatpak
+ensure_flatpak: ## Install flatpak package manager
+	. /etc/os-release
+	if test "$$ID_LIKE" = 'debian'; then
+		echo "[====] ... now installing flatpak for $$ID_LIKE like system"
+		sudo apt-get install -y flatpak
+		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+		echo "[====] ... recommend reboot for XDG_DATA_DIRS path"
+	elif test "$$ID" = 'rocky'; then
+		echo "[====] ... now installing flatpak for $$ID linux"
+		sudo dnf install flatpak
+		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+		echo "[====] ... recommend reboot for XDG_DATA_DIRS path"
+	elif test "$$ID_LIKE" = 'centos'; then
+		echo "[====] ... already on system"
+	fi
 
 .SILENT: ensure_vim_plug
 ensure_vimplug: ## Install vim-plug
 	curl -fLo $(VIM_PATH)/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+.SILENT: install_flatpak_apps
+install_flatpak_apps: ## Various desktop apps I like to have from flatpaks
+	figlet "flatpak: digiKam"
+	flatpak install -y org.kde.digikam
+	figlet "flatpak: Telegram"
+	flatpak install -y org.telegram.desktop 
+	figlet "flatpak: XMPP clients"
+	flatpak install -y im.kaidan.kaidan org.gajim.Gajim im.dino.Dino
+	figlet "flatpak: Mind Mapping"
+	flatpak install -y net.xmind.XMind com.github.phase1geo.minder
+	figlet "flatpak: GIMP"
+	flatpak install -y org.gimp.GIMP
+	figlet "flatpak: Reco audio recorder"
+	flatpak install -y com.github.ryonakano.reco
+	figlet "flatpak: Scans to PDF"
+	flatpak install -y com.github.unrud.djpdf
+	figlet "flatpak: Handbrake"
+	flatpak install -y fr.handbrake.ghb
+	figlet "flatpak: Okular"
+	flatpak install -y org.kde.okular
+
+.SILENT: install_greenclip_clipboard
+install_greenclip_clipboard: ## Install the greenclip clipboard manager
+	mkdir -p ~/.local/bin && cd ~/.local/bin
+	wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+	chmod +x greenclip
+	cd ~/.config
+	cp ./nvim/envsupport/regolith/greenclip.toml .
+
 
 .SILENT: install_rc_files
 install_rc_files: ## Set up support files and links

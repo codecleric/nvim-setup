@@ -23,6 +23,7 @@ let g:myfontsize = 12
 "let g:myfontsize = 14
 
 if has("gui_running")
+    colorscheme jellybeans
     if g:os == "Darwin"
         "set guifont=Fira\ Mono:h12
         let &guifont=g:myfontface.'h'.g:myfontsize
