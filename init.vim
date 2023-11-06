@@ -20,6 +20,10 @@ if !exists("g:os") || !exists("g:pluggedloc") || !exists("g:vimconfig")
     endif
 endif
 
+if executable('asdf')
+     let g:python_host_prog = '~/.asdf/installs/python/2.7.18/bin/python'
+     let g:python3_host_prog = '~/.asdf/installs/python/3.12.0/bin/python'
+endif
 call plug#begin(g:pluggedloc)
 
   " General environment improvement
@@ -50,7 +54,7 @@ call plug#begin(g:pluggedloc)
 
   " UtiliSnips; https://github.com/SirVer/ultisnips
   "   also see https://github.com/panozzaj/conf/blob/master/common/.vim/UltiSnips/javascript.snippets
-  Plug 'SirVer/ultisnips'
+  "Plug 'SirVer/ultisnips'
 
   Plug 'sotte/presenting.vim'
   Plug 'mileszs/ack.vim'

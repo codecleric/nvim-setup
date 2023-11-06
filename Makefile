@@ -39,7 +39,7 @@ readme: ensure_cowsay ## Show the project README.md file
 		@done
 	@fi
 
-full-monte: ensure_packages ensure_zsh_setup ensure_vimplug install_rc_files install_hack_font ## Install everything
+full-monte: ensure_packages ensure_croc ensure_zsh_setup ensure_vimplug install_rc_files install_hack_font ## Install everything
 
 .SILENT: ensure_packages
 ensure_packages: ## Install the utilities I like to have around
@@ -47,17 +47,17 @@ ensure_packages: ## Install the utilities I like to have around
 	echo "Installing various packages to support this config... you will be asked to sudo"
 	if test "$$ID_LIKE" = 'debian'; then
 		echo "[====] ... now installing tools for $$ID_LIKE like system"
-		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags exa vim-gtk3 figlet ripgrep
+		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all pipx curl universal-ctags exa vim-gtk3 figlet ripgrep scrot direnv gufw
 	elif test "$$ID_LIKE" = 'centos'; then
 		echo "[====] ... now installing tools for $$ID_LIKE like system "
-		sudo yum install -y zsh git tmux at pipx curl ctags
+		sudo yum install -y zsh git tmux at pipx curl ctags direnv
 	elif test "$$ID" = 'nixos'; then
 		echo "[====] ... now installing tools on $$ID_LIKE "
 	    nix-env -iA nixos.fortune nixos.at nixos.sox nixos.python310Packages.pipx nixos.curl nixos.universal-ctags
 	fi
 
 .SILENT: ensure_zsh_setup
-ensure_zsh_setup: ## Install oh-my-zsh and zgen
+ensure_zsh_setup: install_asdf_tool ## Install oh-my-zsh and zgen
 	# Fetch oh-my-zsh
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	# Fetch zgen for zsh package management
@@ -83,6 +83,11 @@ ensure_flatpak: ## Install flatpak package manager
 .SILENT: ensure_vim_plug
 ensure_vimplug: ## Install vim-plug
 	curl -fLo $(VIM_PATH)/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+.SILENT: ensure_croc
+ensure_croc: ## Get the croc file transfer utility
+	figlet "Get croc"
+	curl https://getcroc.schollz.com | bash
 
 .SILENT: install_flatpak_apps
 install_flatpak_apps: ## Various desktop apps I like to have from flatpaks
@@ -134,14 +139,33 @@ install_rc_files: ## Set up support files and links
 		echo '# add local shell changes here' >>  ~/.zsh.local
 		echo '" Add local vim settings here ' >> ~/.nvimlocal.vim
 	fi
+.SILENT: install_asdf_tool
+install_asdf_tool: ## Install the asdf tool versions manager
+	figlet "git: asdf"
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
 
-.SILENT: install_hack_font
-install_hack_font: ## Install the Nerd Hack font
-	mkdir -p $(HOME)/.local/share/fonts $(HOME)/.config/fontconfig/conf.d
-	cp $(ENVSUPPORT_PATH)/fonts/ttf/* $(HOME)/.local/share/fonts/
-	cp $(ENVSUPPORT_PATH)/fonts/45-hack.conf $(HOME)/.config/fontconfig/conf.d
-	fc-cache -f -v
-	fc-list | grep "Hack"
+.SILENT: install_lua_lang
+#install_lua_lang: extra_cows ## Install the Lua programming language, luarocks package manager and JIT
+install_lua_lang: ## Install the Lua programming language, luarocks package manager and JIT
+	figlet "Lua"
+	luaversion=5.4.6
+	cowsay -f megaman "Installing Lua $$luaversion"
+	mkdir /tmp/lua
+	cd /tmp/lua
+	curl -R -O http://www.lua.org/ftp/lua-$$luaversion.tar.gz
+	tar xvf lua-$$luaversion.tar.gz
+	cd lua-$$luaversion
+	make linux test
+	sudo make install
+	rocksversion=3.9.2
+	cowsay -f megaman "Installing LuaRocks $$rocksversion"
+	cd ..
+	curl -R -O http://luarocks.github.io/luarocks/releases/luarocks-$$rocksversion.tar.gz
+	tar xzf luarocks-$$rocksversion.tar.gz
+	cd luarocks-$$rocksversion
+	./configure --with-lua-include=/usr/local/include
+	make
+	sudo make install
 
 .SILENT: install_nerd_fonts
 install_nerd_fonts: ## Install the Nerd Fonts repo
@@ -151,6 +175,18 @@ install_nerd_fonts: ## Install the Nerd Fonts repo
 	cd nerd-fonts
 	chmod +x ./install.sh
 	./install.sh 
+
+.SILENT: install_entr
+install_entr: ## entr - File watcher and command runner
+	figlet "Building entr"
+	mkdir -p /tmp/entr_src
+	cd /tmp/entr_src
+	git clone https://github.com/eradman/entr.git
+	cd entr
+	./configure
+	make test
+	sudo make install
+
 
 archive-repo: ## Make a tar/gzip archive of the repo with the date
 	mydir=`pwd`
@@ -175,6 +211,15 @@ ensure_cowsay: # install the cowsay tool (single hash keeps me out of the menu)
 		fi
 	fi
 
+.SILENT: extra_cows
+extra_cows: ## Install additional cows for cowsay
+	echo "[====] ... now installing extra cowsay cows, with sudo "
+	echo "[====] ... examples here: https://github.com/paulkaefer/cowsay-files/blob/main/examples.md"
+	git clone https://github.com/paulkaefer/cowsay-files.git ~/.cows
+	cd ~/.cows
+	sudo make install
+	echo "[====] ... updating COWPATH env var in ~/.zsh.local"
+	echo "export COWPATH=/usr/local/share/cowsay-files/cows:/usr/share/cowsay/cows" > ~/.zsh.local
 
 .PHONY: help
 .SILENT: help

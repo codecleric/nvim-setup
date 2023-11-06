@@ -1,0 +1,72 @@
+# Agent 47 (Hitman series)
+# by FDZGamer - https://www.reddit.com/r/HiTMAN/comments/cjqv32/pixel_art_by_twitchtvfdzgamer/
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;223m  ";
+$b = "\e[48;5;180m  ";
+$c = "\e[48;5;95m  ";
+$d = "\e[48;5;233m  ";
+$e = "\e[48;5;231m  ";
+$f = "\e[48;5;234m  ";
+$g = "\e[48;5;235m  ";
+$h = "\e[48;5;248m  ";
+$i = "\e[48;5;52m  ";
+$j = "\e[48;5;88m  ";
+$k = "\e[48;5;252m  ";
+$l = "\e[48;5;124m  ";
+$m = "\e[48;5;243m  ";
+$n = "\e[48;5;237m  ";
+$o = "\e[48;5;239m  ";
+
+$the_cow = <<EOC
+            $t
+              $t              $a      $x
+                $t          $a  $b  $a  $x
+                  $t        $a$b      $a$x
+                            $a$b      $a$x
+                          $c$a$b      $a$b$x
+                          $c$a$b      $a$b$x
+                            $c$b      $a$x
+                            $c  $b    $a$x
+                              $c$b    $x
+                          $d$e$c      $e$f  $x
+                        $d  $e          $d$f$g$x
+                    $g  $d  $e$h$i$j$h$e$d$f$g    $x
+                  $g$f  $d  $h$e$i$j$e$h$d  $f  $g  $x
+                $g  $f$d    $e  $i$j$e  $d    $f  $g$x
+                $g$f  $d    $e  $i  $e  $d      $f$g$x
+                $g$f$d      $e  $i  $e  $d      $f$g  $x
+                $g$f$d      $e  $i  $e  $d      $f  $g$x
+                $g$f$d      $k$e$i  $e  $d        $f$g$x
+                $g$f$d      $k$e$i$j$e  $d        $f$g$x
+                $g$f$d      $k$e$i$j$e  $d        $f$g$x
+                $g$f$d      $k$e$i$j$e  $d        $f$g$x
+                $g$f$d    $h$k$i$j  $e  $d    $x$d$f  $g$x
+              $g  $d      $h$k$i$j$e    $d    $x$d    $g$x
+              $g$d    $i$h$k  $i$j$e    $d    $x  $d  $g$x
+              $d  $i$j$i$h$k$i$j  $e    $d    $x  $d  $g  $x
+            $d  $i$l$j$i$h$k$j    $e    $d      $x$d    $g$x
+          $d  $i$l$j  $i$k  $j  $e      $d      $x$d    $g$x
+        $d  $i$l  $j  $i$k  $j  $e      $d      $x$d    $g$x
+      $d  $i$l  $j  $i  $h$k  $e        $d      $x  $d      $x
+      $d$i$j$l  $j  $i$d    $h  $k    $d          $x$d      $x
+      $d$i  $j$l$j$i  $d                          $x$d      $x
+      $d    $i$j$i    $d                          $x  $k$e$k$x
+          $d$i      $d                            $x  $m$d$n$x
+          $d$i  $d                                $x  $m$d$n$x
+          $d      $f$d                          $x    $n$d  $x
+            $m$f    $d                          $x      $d$x
+            $m$n  $f$d                    $f$d  $x  $m$f$d$f$x
+            $m$n    $d            $x$d    $f$d  $x  $m$o$f  $d$x
+            $m$n  $x$d            $x$d    $f$d  $x  $m$n$o    $x
+            $m$n$x  $d            $x$d    $f  $d$x  $m$n$d    $x
+            $m$n$x  $d            $x  $d  $f  $d$x  $m$n$d    $x
+            $m$x    $d            $x  $d    $f$d$x  $m$n$d    $x
+            $m$x    $d            $x  $d    $f$d$x  $m$n$d    $x
+            $m$x      $d        $x    $d        $x  $m$n$d    $x
+            $m$x      $d        $x      $d      $x  $m$n$d    $x
+            $m$x      $f$d      $x      $d      $x  $m$n$d    $x
+                      $f$d      $x    $f$d      $x  $m$n$d    $x
+EOC

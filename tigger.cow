@@ -1,0 +1,66 @@
+# Tigger (Winnie the Pooh)
+# by Makibird Stitching - https://www.deviantart.com/makibird-stitching/art/Tigger-Bouncing-251591052
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;94m  ";
+$b = "\e[48;5;166m  ";
+$c = "\e[48;5;237m  ";
+$d = "\e[48;5;215m  ";
+$e = "\e[48;5;231m  ";
+$f = "\e[48;5;187m  ";
+$g = "\e[48;5;230m  ";
+$h = "\e[48;5;208m  ";
+$i = "\e[48;5;167m  ";
+$j = "\e[48;5;180m  ";
+
+$the_cow = <<EOC
+        $t
+          $t          $a  $b  $x
+            $t    $c  $b$d$b$c  $x
+                $c$a  $d$b$c$e  $f$x
+            $a      $d  $c$g$e  $c$x    $c$x
+          $a$d    $a$d  $c$f$c$g$d$h$b$c$x
+          $a$h$f$h    $d$h  $d    $i$f$i$c  $x
+            $a    $h$a$h$a$g$c  $g$i    $x
+                $a$b$a  $f$g$f$g$c$f$b$a$x
+                  $c$b$j$f$g  $c$f  $j$a$x
+                    $c  $a$f$g$b$a    $x
+                  $a        $f$g$b  $f$x
+                  $b$d  $h$a$j$f$g  $j$a$x
+                $a$d    $h  $a$j$f  $a$d$a$x
+                $c$a$h$d$b$h$f$a    $h  $d$a$x
+                $c$a  $c$h  $f$g  $j$a$h  $a$b$a$x
+              $a$b$h$a$c$h$a$j$g  $f$a$h$a  $d$a$b  $x
+              $a$d  $h$c$h  $f$g    $a  $c$h$d$a$d$h$a$b      $x
+            $a$b$d  $a  $b$h$f$g    $a$x$a  $h$d$h$b$d$a$d  $h$b  $x
+            $a$h$a  $c$a  $b$f$g    $a$x    $a  $b$d            $h$b$x
+            $a$d  $a$c$a$b$h$f$g    $a$x        $a  $b$h$d$h$a      $x
+            $a$h$d$h$c$b$h  $f$g    $a$x            $a    $d$a$x
+            $a    $c$a$b$h$a$j$g    $a$x                  $a  $x
+            $c$h$d$h$a$b$h  $f$g    $a$x                $a    $x
+            $a$h$a    $b$h    $g    $a$x                $a$h$d$a$x
+            $a$h$d$h$a  $b$h  $g    $j$x              $a$b$d  $a$x
+              $a  $d$c$a    $h$g    $f$a$x$a    $c$x  $a$h$d$h$a$x
+              $a    $c$b$h  $d$g      $j$c$b$d$a  $b$a  $d  $b$a$x
+            $a$h    $a$c$h$a$b$f$g    $f$a$d  $h$a$d$h  $d  $a$x
+            $b$d    $a$c$a$d  $b$g    $f$a$h$d  $a$h    $d$h$a$x
+            $a      $x$c$h$b  $d$b$g    $a$h  $b$a    $b$h$b$a$x
+                        $c$b    $a$g  $f$a$b$a  $x    $a    $x
+                        $c$b      $a$f  $b$a$x
+                        $c$a$b    $a$j  $a$x
+                          $c$b    $c$a  $x
+                        $c  $a$b$a$c$x
+                        $c$a$c    $x
+                          $c$a  $x
+                        $a$b$h$b  $x
+                        $b$h$d  $b$x
+                        $c  $a$c$x
+                          $c$a$c$x
+                        $a$h$d$h$b$x
+                          $a    $x
+                        $a$h$d$h$a$x
+                        $c  $a    $x
+                          $c  $a$x
+EOC

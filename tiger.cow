@@ -1,0 +1,56 @@
+# Tiger (Mizzouri University mascot)
+# by Charc0al
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;235m  ";
+$b = "\e[48;5;231m  ";
+$c = "\e[48;5;214m  ";
+
+$the_cow = <<EOC
+                                        $t
+                                          $t
+                                            $t
+                                              $t                          $a    $x
+                                                $t                      $a$b    $a  $x
+                                                          $a        $x$a                $x
+                                      $a                              $c          $a        $x
+                                $a              $c          $a                    $c            $a  $x
+                                $a  $c        $a$b$c                        $a            $c        $a  $x
+                          $a          $c        $a$b$c                                  $a      $c      $a  $x
+                      $a              $c        $a  $b  $c            $b$c                      $a  $c    $a  $x
+                  $a                  $c        $a      $b    $c      $a$b          $c                        $a$x
+              $a                        $c        $a          $b$a                    $b  $c              $a$c$a$x
+          $a                            $c          $a                              $b$a    $b$c            $a  $x
+        $a                              $c            $a                    $b    $a$b$a  $b$a    $b$c          $a  $x
+      $a                            $c$a  $c          $a                        $b                        $c          $a  $x
+  $a                                  $c              $a    $c$a                            $b              $c          $b$a$x
+$a              $c$a                  $c              $a    $c$a                                      $b        $c$a    $c$b$x
+  $a              $c$a                  $c              $a$c$a                          $b                    $a          $b$a$x
+  $a              $c  $a                $c              $a$c$a                            $b                      $a    $b  $a$x
+  $a$c  $a        $c    $a                $c            $a$c$a                                            $b        $a$b  $a  $x
+  $a$c      $a      $c    $a              $c                $a        $c$a                  $b                      $a$b    $a$x
+$a  $c        $a    $c      $a              $c              $a        $c$a                            $b            $a$b    $x
+$a  $c          $a    $c      $a              $c              $a    $c  $a                    $b            $a$b    $a$b    $x
+$a  $c              $a  $c        $a          $c              $a    $c  $a                  $b$a      $b          $a  $b  $a$x
+  $a    $c              $a$c        $a          $c            $a    $c    $a        $b                          $a    $b  $a$x
+    $a    $c                            $a        $c$b$c      $a    $c    $a      $b  $a            $b      $a  $b  $a$b$a$x
+        $a    $c                            $a    $c  $b$c$b$c  $a  $c    $a      $b$a                $b    $a    $b  $a$x
+            $a    $c                            $a  $c  $b  $c  $a  $c      $a  $b$a              $b  $a$b  $a$x$a$b  $a$x
+                $a      $c      $b          $c      $a$c$b    $c  $a$c  $b$c$a  $b$a            $b  $a  $b$a$x  $a$b$a$x
+                    $a        $c      $b          $c      $b  $c  $a  $c$b  $c$a$b$a            $b$a      $x  $a$b$a$x
+                  $a                $c    $b            $c  $b  $c  $a$c$b        $a$b        $a$b$a    $x    $a  $x
+                    $a      $c$a        $c      $b                $c$a$c$b                        $a  $x
+                        $a      $c      $b                          $c  $b        $a        $b    $a$b$a$x  $a$x
+                            $a      $c    $b                          $c$b          $a        $b$a$b  $a$x$a$b$a$x
+                              $a          $c    $b                      $c$b              $a    $b  $a    $b  $a$x
+                          $a                  $c    $b                                                      $a  $x
+                              $a  $c          $b                    $a  $b                                    $a$x
+                                  $a      $c  $b                        $a  $b                                $x
+                                  $a      $b                  $a      $x    $a$b                            $a$x
+                                      $a    $b          $a      $x            $a$b  $a$b                $a  $x
+                                          $a              $x                  $a    $b  $a$b    $a$b  $a  $x
+                                                    $a$x                          $a$b$a$b  $a  $b$a  $x
+                                                                                    $a      $x  $a$x
+EOC

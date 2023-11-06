@@ -42,12 +42,11 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/gitfast
     zgen oh-my-zsh plugins/git-extras
     zgen oh-my-zsh plugins/gitignore
-    zgen oh-my-zsh plugins/pdm
+    zgen oh-my-zsh plugins/asdf
 
     # github plugins
     zgen load lukechilds/zsh-nvm
     zgen load jocelynmallon/zshmarks
-    ##TODO: error to fix## zgen load yonchu/vimman 
 
     # set up some conditionals
     #
@@ -57,8 +56,8 @@ if ! zgen saved; then
             zgen oh-my-zsh plugins/brew
             ;;
         Linux)
-            echo "problem with debian plugin"
-            #zgen oh-my-zsh plugins/debian
+            #echo "problem with debian plugin"
+            zgen oh-my-zsh plugins/debian
             ;;
     esac
     
@@ -97,47 +96,41 @@ esac
 ## RIPGREP setup
 export RIPGREP_CONFIG_PATH=$HOME/.config/nvim/envsupport/ripgrep/ripgreprc
 
-## AUTOENV setup and functions
-export AUTOENV_COMMON_HOOKS=$HOME/.config/nvim/envsupport/zsh/autoenv
 
-rbb_init_autoenv() {
-    cat > $AUTOENV_FILE_ENTER <<EOF
-## Source begin of enter common hook
-source $AUTOENV_COMMON_HOOKS/autoenv-enter-begin.zsh
-
-# Place customizations here
-
-## Source end of enter common hook
-source $AUTOENV_COMMON_HOOKS/autoenv-enter-end.zsh
-EOF
-
-    cat > $AUTOENV_FILE_LEAVE <<EOF
-## Source begin of enter common hook
-source $AUTOENV_COMMON_HOOKS/autoenv-leave-begin.zsh
-
-# Place customizations here
-
-## Source end of enter common hook
-source $AUTOENV_COMMON_HOOKS/autoenv-leave-end.zsh
-EOF
-    _autoenv_authorize $AUTOENV_FILE_ENTER
-    _autoenv_authorize $AUTOENV_FILE_LEAVE
-}
-
-rbb_init_mega() {
-  echo "Initializing 'npm init' and 'pyvenv init' and 'autoenv' in this directory"
-  npm init -y .
-  pyvenv init .
-  rbb_init_autoenv
+custom_init_mega() {
+  echo "This is a sample function "
   cd $PWD
 }
 
-export PATH=~/.local/bin:~/Apps:${PATH}
+if [ -d "$HOME/.local/bin" ] ; then
+     PATH="$HOME/.local/bin:$PATH"
+fi
+if [ -d "$HOME/Apps" ] ; then
+     PATH="$HOME/Apps:$PATH"
+fi
+
 export TERM=xterm-256color
 
-[ -f ~/.zsh.local ] && source ~/.zsh.local
 [ -f /usr/bin/kubectl ] && source <(kubectl completion zsh)
 [ -f /usr/bin/direnv ] && eval "$(direnv hook zsh)"
 
+# If you replace $PROG with croc in /etc/zsh/zsh_autocomplete_croc, you don't need the follwing lines
+#PROG=croc
+#_CLI_ZSH_AUTOCOMPLETE_HACK=1
+#source /etc/zsh/zsh_autocomplete_croc
+
+# Commands to be executed before the prompt is displayed
+# Save current working dir - new shells will start in the last dir
+precmd() { pwd > "${HOME}/.cwd" }
+
+# Change to saved working dir
+[[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
+
+# Source local shell additions
+[ -f ~/.zsh.local ] && source ~/.zsh.local
+
+
+
 export TMPDIR=/tmp
 if [ -e /home/brian/.nix-profile/etc/profile.d/nix.sh ]; then . /home/brian/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

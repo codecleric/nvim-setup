@@ -9,6 +9,9 @@ alias makehere="cp ${HOME}/.config/nvim/envsupport/zsh/makefile.template ./Makef
 alias makeheredc="cp ${HOME}/.config/nvim/envsupport/zsh/makefile.template.docker-compose ./Makefile"
 alias makehereds="cp ${HOME}/.config/nvim/envsupport/zsh/makefile.template.docker-swarm ./Makefile"
 alias fd=fdfind
+alias mu="make -f ~/.config/nvim/envsupport/Makefile.utils"
+alias mi="make -f ~/.config/nvim/Makefile"
+alias refresh_aliases="source ~/.config/nvim/envsupport/zsh/aliasrc"
 
 sys="`uname`"
 echo "System is $sys"

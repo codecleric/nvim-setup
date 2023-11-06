@@ -271,6 +271,17 @@ install_nerd_fonts: ## Install the Nerd Fonts repo
 	chmod +x ./install.sh
 	./install.sh 
 
+.SILENT: install_entr
+install_entr: ## entr - File watcher and command runner
+	figlet "Building entr"
+	mkdir -p /tmp/entr_src
+	cd /tmp/entr_src
+	git clone https://github.com/eradman/entr.git
+	cd entr
+	./configure
+	make test
+	sudo make install
+
 archive-repo: ## Make a tar/gzip archive of the repo with the date
 	mydir=`pwd`
 	@cd ..
