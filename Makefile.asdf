@@ -47,7 +47,7 @@ ensure_packages: install_asdf_tool ## Install the utilities I like to have aroun
 	if test "$$ID_LIKE" = 'debian'; then
 		echo "[====] ... now installing build tools for $$ID_LIKE like system"
 		echo "[====] ... installing utilities not available via asdf"
-		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all curl git universal-ctags figlet g++ make scrot gufw imagemagick
+		sudo apt-get install -y zsh git fortune tmux at sox libsox-fmt-all curl git universal-ctags figlet g++ make scrot gufw imagemagick libncurses5-dev
 		echo "[====] ... installing build tools for compiling things later on"
 		echo "[====] ... first for Python"
 		sudo apt install -y wget build-essential libreadline-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev lzma liblzma-dev 
@@ -62,6 +62,7 @@ ensure_packages: install_asdf_tool ## Install the utilities I like to have aroun
 	    nix-env -iA nixos.fortune nixos.at nixos.sox nixos.python310Packages.pipx nixos.curl nixos.universal-ctags
 	fi
 	echo "Installing various packages to support this config... you will be asked to sudo"
+	. "${HOME}/.asdf/asdf.sh"
 	cowsay "Installing neovim"
 	asdf install neovim stable
 	cowsay "Installing vim"
@@ -218,6 +219,7 @@ install_asdf_tool: ensure_cowsay ## Install the asdf tool versions manager
 	then
 		figlet "git: asdf"
 		git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+		. "${HOME}/.asdf/asdf.sh"
 		cowsay "Adding asdf plugins"
 		asdf plugin add neovim
 		asdf plugin add vim
