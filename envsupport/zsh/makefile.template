@@ -2,9 +2,12 @@
 SHELL=/bin/bash
 SAMPLE_ENV_VAR_WITH_DEFAULT ?= a-default-value
 proj := "sample-proj"
-MONKEY_VAR ?= monkey lips
+MONKEY_VAR ?= monkey tail
 
+# This executes each target in one shell, not one shell per line
 .ONESHELL:
+# This turn of echoing.. acts like prepended '@' for each line in each target
+.SILENT:
 
 readme: ensure_cowsay ## Show the project README.md file
 	@if [ -f ./README.md ] ; then
@@ -37,12 +40,10 @@ readme: ensure_cowsay ## Show the project README.md file
 		@done
 	@fi
 
-.PHONY: a_prereq
 a_prereq: ## A generic prereq
 	@echo "I'm a message from a prereq"
 	@echo "========================================"
 
-.PHONY: another_prereq
 another_prereq: ## Another generic prereq
 	@echo "I'm a message from another prereq"
 	@echo "========================================"
@@ -72,7 +73,6 @@ jsyfiles := index.jsy compa.jsy compb.jsy compc.jsy
 jsfiles := $(jsyfiles:.jsy=.js)
 
 bar := $(foo:.o=.c)
-.SILENT: show_types_of_vars
 show_types_of_vars: monkey_face=${MONKEY_VAR}
 show_types_of_vars: a_prereq another_prereq ## Show examples of different variable type usage
 	echo "Here is an env var SAMPLE_ENV_VAR_WITH_DEFAULT: ${SAMPLE_ENV_VAR_WITH_DEFAULT}"
@@ -99,7 +99,6 @@ show_types_of_vars: a_prereq another_prereq ## Show examples of different variab
 DS := \$
 BL := {
 BR := }
-.SILENT: bash_var_games
 bash_var_games: ## Using var substitution with bash in a Makefile
 	echo "Bash supports manipulating the values in a var with characters following the var name"
 	echo "   ,, will lowercase the whole var"
@@ -119,7 +118,6 @@ bash_var_games: ## Using var substitution with bash in a Makefile
 	echo "MONKEY_VAR uppercase with the double dollar: $${avar^^} (value correct)"
 	echo ""
 
-.SILENT: sample_loop sample_loop_two
 sample_loop: ## Sample of looping in make target
 	echo "[====] printing out the servers "
 	echo "[====] (note the use of double dollar signs when using vars in make targets)"
@@ -169,39 +167,39 @@ node_modules: package.json
 rollup := node_modules/.bin/rollup
 
 watch: node_modules ## Run rollup to rebuild on changes
-	@$(rollup) --config --watch
+	$(rollup) --config --watch
 
 qsrv := node_modules/.bin/qsrv
 
 serve: node_modules ## Serve the app
-	@$(qsrv) --root ./root -f ./root/index.html -- ./root ./root/esm
+	$(qsrv) --root ./root -f ./root/index.html -- ./root ./root/esm
 
 # Following are utility functions we use in the Makefile
 ensure_cowsay: # install the cowsay tool (single hash keeps me out of the menu)
-	@if ! command -v cowsay &> /dev/null
-	@then
-		@echo "[====] ... now installing cowsay - requesting SUDO password"
-		@sudo apt-get install -y fortune cowsay
-	@fi
+	if ! command -v cowsay &> /dev/null
+	then
+		echo "[====] ... now installing cowsay - requesting SUDO password"
+		sudo apt-get install -y fortune cowsay
+	fi
 
 archive_repo: root/% ## Make a tar/gzip archive of the repo with the date
 	mydir=`pwd`
-	@cd ..
-	@tar cvzf $(proj)-`date +%Y-%m-%dT%H%M`.tgz $$mydir
+	cd ..
+	tar cvzf $(proj)-`date +%Y-%m-%dT%H%M`.tgz $$mydir
 
 
 
 .PHONY: help sample-loop ensure_cowsay show-types-of-vars init-jsy-node-project
-.PHONY: init-jsy-basic-project init-jsy-from-github
+.PHONY: init-jsy-basic-project init-jsy-from-github a_prereq another_prereq
 
 help: ensure_cowsay
-	@if [ -f ./README.md ] ; then
-		@grep "^\#" -m 2 -n README.md | awk 'NR>1 {split($$0,a,":"); print a[1] | "read c; c=$$((c-1)); head -n $$c README.md" }'
-		@echo "========================================================================"
-	@else
-		@cowsay "Add a README.md for a better description"
-	@fi
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	if [ -f ./README.md ] ; then
+		grep "^\#" -m 2 -n README.md | awk 'NR>1 {split($$0,a,":"); print a[1] | "read c; c=$$((c-1)); head -n $$c README.md" }'
+		echo "========================================================================"
+	else
+		cowsay "Add a README.md for a better description"
+	fi
+	grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 
 .DEFAULT_GOAL := help
