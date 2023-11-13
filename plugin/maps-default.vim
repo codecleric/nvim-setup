@@ -16,6 +16,15 @@ noremap <Leader>gs :Git status<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gf :Gpull<CR>
 noremap <Leader>gd :Gdiff<CR>
+"
+" <Leader>f = Fossil plugin for ... well, Fossil
+noremap <Leader>fw :Fadd<CR>
+noremap <Leader>fc :Fcommit -m 
+noremap <Leader>fs :Fstatus<CR>
+noremap <Leader>fh :Fchanges<CR>
+noremap <Leader>fo :Fopen 
+noremap <Leader>ft :Ftimeline<CR>
+noremap <Leader>fd :Fvdiff<CR>
 
 " make C-N and C-P move to the next and previous 'error'
 noremap <C-N> :cn<cr>

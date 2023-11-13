@@ -25,6 +25,10 @@ if ! zgen saved; then
 
     # plugins
     zgen oh-my-zsh plugins/vi-mode
+    zgen oh-my-zsh custom/plugins/zsh-autosuggestions
+    zgen oh-my-zsh custom/plugins/zsh-syntax-highlighting
+    zgen oh-my-zsh custom/plugins/fast-syntax-highlighting
+    #zgen oh-my-zsh custom/plugins/zsh-autocomplete
     zgen oh-my-zsh plugins/history-substring-search
     zgen oh-my-zsh plugins/colored-man-pages
     zgen oh-my-zsh plugins/git 

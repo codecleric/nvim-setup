@@ -77,7 +77,9 @@ call plug#begin(g:pluggedloc)
   Plug 'neo4j-contrib/cypher-vim-syntax'
   Plug 'isobit/vim-caddyfile'
   Plug 'earthly/earthly.vim'
+  Plug 'mtvee/vim-fossil'
   "Plug 'nicr9/vim-orca'
+  "
   "
   "Vim only
   "Plugin 'Shougo/vimproc.vim'
