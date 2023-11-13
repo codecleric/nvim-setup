@@ -36,9 +36,9 @@ ensure_figlet: # install the cowsay tool (single hash keeps me out of the menu)
 
 
 .ONESHELL:
-.SILENT: archive_repo start stop shell pull help ensure_figlet
+.SILENT: 
 
-.PHONY: help
+.PHONY: help archive_repo start stop shell pull help ensure_figlet
 
 help: ensure_figlet
 	figlet "${SERVICE} actions"
