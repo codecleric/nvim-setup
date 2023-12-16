@@ -35,7 +35,6 @@ call plug#begin(g:pluggedloc)
   Plug 'tpope/vim-jdaddy'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-dadbod'
-  Plug 'LnL7/vim-nix'
 
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'ryanoasis/vim-devicons'
@@ -60,6 +59,7 @@ call plug#begin(g:pluggedloc)
   Plug 'mileszs/ack.vim'
   Plug 'aquach/vim-http-client'
   Plug 'Keithbsmiley/investigate.vim'
+  Plug 'BurntSushi/ripgrep'
 
   " Navigation
   Plug 'scrooloose/nerdtree'
@@ -112,6 +112,12 @@ call plug#begin(g:pluggedloc)
   Plug 'flazz/vim-colorschemes'
   Plug 'drmikehenry/vim-fontsize'
   "Plug 'nathangrigg/vim-beancount'
+  "
+  if has('nvim')
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+  endif
+
     
 call plug#end()            " required
 
@@ -156,6 +162,12 @@ set hlsearch
 
 if !empty(glob(expand("~/.nvimlocal.vim")))
    source ~/.nvimlocal.vim
+endif
+
+let nvimlua = expand(g:vimconfig) . '/nvimsetup.lua'
+if has('nvim')
+   Plug 'nvim-lua/plenary.nvim'
+   exec "source " . nvimlua
 endif
 
 set wildmenu

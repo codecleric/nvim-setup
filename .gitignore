@@ -6,3 +6,4 @@ plugged/
 cache/
 *swp
 Vundle
+lazy-lock.json

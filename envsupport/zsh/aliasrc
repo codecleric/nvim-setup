@@ -12,6 +12,7 @@ alias fd=fdfind
 alias mu="make -f ~/.config/nvim/envsupport/Makefile.utils"
 alias mi="make -f ~/.config/nvim/Makefile"
 alias refresh_aliases="source ~/.config/nvim/envsupport/zsh/aliasrc"
+alias vim=nvim
 
 sys="`uname`"
 echo "System is $sys"
