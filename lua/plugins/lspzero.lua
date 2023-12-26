@@ -79,7 +79,7 @@ return {
 
       require('mason').setup({})
       require('mason-lspconfig').setup({
-        ensure_installed = {'pylyzer', 'marksman', 'lua_ls', 'tsserver', 'pylsp', 'nimls', 'jsonls', 'pasls'},
+        ensure_installed = {'pylyzer', 'marksman', 'lua_ls', 'tsserver', 'pylsp', 'nimls', 'jsonls'},
         handlers = {
           lsp_zero.default_setup,
           lua_ls = function()
